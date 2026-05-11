@@ -512,7 +512,7 @@ section{padding:64px 22px}
 .timeline{margin-top:44px;position:relative;padding:18px 0 6px;min-height:400px;}
 .tl-svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;overflow:visible;}
 .tl-svg-bg{stroke:rgba(111,118,10,.18);stroke-width:1;fill:none;stroke-dasharray:2 5;}
-.tl-svg-path{stroke:var(--peach);stroke-width:1.6;stroke-linecap:round;fill:none;filter:drop-shadow(0 0 5px rgba(111,118,10,.35));}
+.tl-svg-path{stroke:var(--peach);stroke-width:1.6;stroke-linecap:round;fill:none;filter:drop-shadow(0 0 7px rgba(165,232,50,1)) drop-shadow(0 0 22px rgba(145,215,40,.65));}
 .tl-row{position:relative;z-index:1;min-height:158px;display:flex;align-items:center;margin-bottom:14px;}
 .tl-row[data-side="left"]{padding-left:58px;padding-right:44%;justify-content:flex-start;text-align:left;}
 .tl-row[data-side="right"]{padding-right:58px;padding-left:44%;justify-content:flex-end;text-align:right;}
@@ -535,7 +535,7 @@ section{padding:64px 22px}
 .tl-dot{position:absolute;top:50%;width:14px;height:14px;margin-top:-7px;border-radius:50%;background:var(--ink);border:1.5px solid var(--peach);transform:scale(0);transition:transform .55s var(--spring), box-shadow .55s, background .55s;z-index:2;}
 .tl-row[data-side="left"]  .tl-dot{left:22px}
 .tl-row[data-side="right"] .tl-dot{right:22px}
-.tl-row.on .tl-dot{transform:scale(1);background:var(--peach);box-shadow:0 0 0 3px rgba(255,255,255,.9),0 0 12px rgba(111,118,10,.55),0 0 24px rgba(111,118,10,.3);}
+.tl-row.on .tl-dot{transform:scale(1);background:var(--peach);box-shadow:0 0 0 3px rgba(255,255,255,.9),0 0 14px rgba(165,232,50,.9),0 0 30px rgba(145,215,40,.55);}
 .tl-orn{position:absolute;top:50%;width:40px;height:40px;margin-top:-20px;border-radius:50%;border:1px dashed rgba(111,118,10,.25);opacity:0;animation:tlOrnRotate 22s linear infinite;transition:opacity .9s ease;pointer-events:none;z-index:1;}
 .tl-row[data-side="left"]  .tl-orn{left:9px}
 .tl-row[data-side="right"] .tl-orn{right:9px}
@@ -572,14 +572,32 @@ section{padding:64px 22px}
   border:1px solid rgba(111,118,10,.2);border-radius:16px;
   overflow:hidden;background:rgba(245,248,235,.3);
 }
-.dc-col{flex:1;padding:24px 14px 22px;text-align:center}
+.dc-col{flex:1;padding:32px 14px 28px;text-align:center}
 .dc-col:first-child{border-right:1px solid rgba(111,118,10,.15)}
-.dc-col-ico{width:50px;height:50px;margin:0 auto 14px;background:rgba(111,118,10,.1);border-radius:50%;display:flex;align-items:center;justify-content:center;}
-.dc-col-ico svg{width:26px;height:26px;color:var(--peach)}
-.dc-col-ttl{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:15px;letter-spacing:3px;text-transform:uppercase;color:var(--cream);margin-bottom:14px;}
-.dc-list{list-style:none;padding:0;margin:0;font-family:'Cormorant Garamond',serif;font-size:14px;font-weight:500;color:var(--cream);line-height:2;text-align:left;}
-.dc-list li{padding-left:14px;position:relative;opacity:.85}
-.dc-list li::before{content:'✦';position:absolute;left:0;top:3px;font-size:7px;color:var(--peach);opacity:.7;}
+.dc-col-ico{
+  width:90px;height:90px;margin:0 auto 18px;
+  background:rgba(111,118,10,.06);
+  border-radius:50%;display:flex;align-items:center;justify-content:center;
+  border:1px solid rgba(111,118,10,.18);
+}
+.dc-col-ico svg{width:56px;height:56px;color:var(--peach)}
+.dc-col-ttl{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:15px;letter-spacing:3px;text-transform:uppercase;color:var(--cream);margin-bottom:0;}
+
+/* ── ALBUM QR ─────────────────────────────────────────── */
+#album{background:var(--ink)}
+.alb-sub{text-align:center;font-size:16px;color:var(--cream);opacity:.7;line-height:1.9;margin:14px 0 28px;font-weight:500;}
+.alb-qr-wrap{text-align:center;margin-bottom:24px}
+.alb-qr-frame{
+  display:inline-block;padding:18px;background:#F5F2E8;
+  border-radius:14px;
+  box-shadow:0 4px 18px rgba(0,0,0,.35),0 12px 40px rgba(0,0,0,.28),0 0 0 1px rgba(111,118,10,.25);
+  transition:transform .45s cubic-bezier(.34,1.56,.64,1),box-shadow .4s;
+}
+.alb-qr-frame:hover{transform:translateY(-4px) scale(1.02);box-shadow:0 8px 28px rgba(0,0,0,.4),0 16px 50px rgba(0,0,0,.32),0 0 0 1px rgba(111,118,10,.35);}
+.alb-qr{width:240px;height:240px;display:block;border-radius:4px}
+.alb-scan{margin-top:14px;font-family:'Cormorant Garamond',serif;font-size:12px;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;color:var(--peach);opacity:.75}
+.alb-btn{max-width:310px;margin:0 auto;display:flex}
+.alb-hint{text-align:center;font-size:14px;color:var(--cream);opacity:.5;line-height:1.75;margin-top:22px;font-weight:500;}
 
 /* ── FAMILY ───────────────────────────────────────────── */
 #family{background:var(--ink);overflow:hidden}
@@ -1125,30 +1143,27 @@ section.has-sec-waves{padding-top:84px;padding-bottom:86px}
 </section>
 
 
-<!-- ═══════════════ 7. RSVP ══════════════════════════ -->
-<section id="rsvp">
-  <span class="lbl">Confirmación de asistencia</span>
-  <h2 class="ttl">¿Nos acompañas?</h2>
+<!-- ═══════════════ 7. ÁLBUM COMPARTIDO ══════════════ -->
+<section id="album">
+  <span class="lbl">Captura cada momento</span>
+  <h2 class="ttl">Álbum Compartido</h2>
   <div class="gline"></div>
-  <p class="rsvp-sub">
-    Confirma antes del<br>
-    <span class="rsvp-dl">18 de Junio de 2026</span>
-  </p>
+  <p class="alb-sub">Escanea el código QR y sube las fotos<br>que tomes durante nuestra boda.</p>
 
-  <div class="rsvp-form-wrap">
-    <span class="rsvp-pass-lbl">Pases asignados</span>
-    <p class="rsvp-pases-num" id="rsvpPasesNum">1</p>
-    <span class="rsvp-pases-lbl" id="rsvpPasesLbl">persona</span>
-
-    <div class="rsvp-names-wrap" id="rsvpNamesWrap">
-      <!-- JS inyecta los inputs -->
+  <div class="alb-qr-wrap">
+    <div class="alb-qr-frame">
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=320x320&color=38571a&bgcolor=F5F2E8&data=https%3A%2F%2Fphotos.app.goo.gl%2Fkaren-manuel-boda-2026"
+           alt="QR álbum compartido Karen y Manuel" class="alb-qr" loading="lazy">
     </div>
-
-    <button type="button" onclick="sendRSVP()" class="btn btn-olive rsvp-submit-btn">
-      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 12a19.79 19.79 0 01-3.07-8.67A2 2 0 012 1.27h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-      Confirmar asistencia
-    </button>
+    <p class="alb-scan">Escanea con la cámara</p>
   </div>
+
+  <a href="https://photos.app.goo.gl/karen-manuel-boda-2026" target="_blank" rel="noopener" class="btn alb-btn">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+    Abrir álbum
+  </a>
+
+  <p class="alb-hint">Compartes tus fotos con todos los invitados.<br>El álbum completo estará disponible después del evento.</p>
 </section>
 
 
@@ -1163,44 +1178,52 @@ section.has-sec-waves{padding-top:84px;padding-bottom:86px}
     <!-- Caballeros -->
     <div class="dc-col">
       <div class="dc-col-ico">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="12" cy="5.5" r="3"/>
-          <path d="M10 8.5 L8.5 11 L12 13 L15.5 11 L14 8.5"/>
-          <path d="M8.5 11 L6 22 H18 L15.5 11"/>
-          <line x1="10" y1="9.5" x2="12" y2="11.5"/>
-          <line x1="14" y1="9.5" x2="12" y2="11.5"/>
+        <svg viewBox="0 0 40 68" fill="none" stroke="currentColor" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round">
+          <!-- Head -->
+          <circle cx="20" cy="7.5" r="6.5"/>
+          <!-- Collar -->
+          <path d="M16.5 14 L16.5 17.5 M23.5 14 L23.5 17.5"/>
+          <!-- Jacket body -->
+          <path d="M20 17.5 L10 23 L8.5 54 H31.5 L30 23 Z"/>
+          <!-- Left lapel -->
+          <path d="M20 17.5 L12.5 26.5 L17.5 29"/>
+          <!-- Right lapel -->
+          <path d="M20 17.5 L27.5 26.5 L22.5 29"/>
+          <!-- Tie -->
+          <path d="M17.5 23 L20 34 L22.5 23"/>
+          <!-- Trouser legs -->
+          <path d="M8.5 54 L10.5 68 H18.5 L20 61 L21.5 68 H29.5 L31.5 54"/>
         </svg>
       </div>
       <p class="dc-col-ttl">Caballeros</p>
-      <ul class="dc-list">
-        <li>Traje o saco formal</li>
-        <li>Negro · Gris Oxford<br>Azul marino · Verde bosque</li>
-        <li>Camisa de vestir<br>con corbata o moño</li>
-        <li>Zapatos de vestir</li>
-      </ul>
     </div>
 
     <!-- Damas -->
     <div class="dc-col">
       <div class="dc-col-ico">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="12" cy="5.5" r="3"/>
-          <path d="M8 10 Q12 15 16 10 L18.5 22 H5.5 Z"/>
+        <svg viewBox="0 0 40 68" fill="none" stroke="currentColor" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round">
+          <!-- Head -->
+          <circle cx="20" cy="7" r="6"/>
+          <!-- Neck/shoulders -->
+          <path d="M16.5 13 L16.5 17 M23.5 13 L23.5 17"/>
+          <!-- Bodice -->
+          <path d="M13.5 17 Q20 14.5 26.5 17 L27.5 31 H12.5 Z"/>
+          <!-- Waist -->
+          <path d="M12.5 31 Q20 28.5 27.5 31"/>
+          <!-- Ball gown skirt -->
+          <path d="M12.5 31 L5 68 H35 L27.5 31"/>
+          <!-- Skirt flow lines -->
+          <path d="M15 40 Q12 52 10 63" stroke-opacity=".4"/>
+          <path d="M25 40 Q28 52 30 63" stroke-opacity=".4"/>
         </svg>
       </div>
       <p class="dc-col-ttl">Damas</p>
-      <ul class="dc-list">
-        <li>Vestido largo o cocktail</li>
-        <li>Verde sage · Verde olivo<br>Vino · Azul marino</li>
-        <li>Tacones o sandalias<br>elegantes</li>
-        <li>Accesorios dorados</li>
-      </ul>
     </div>
   </div>
 
   <div class="dc-note" id="dcNote">
     <strong>Por favor evitar:</strong>
-    Blanco, beige, champagne o derivados (reservados para la novia) · Colores muy llamativos o estampados.
+    Blanco, beige o sus derivados (reservados para la novia) · Colores muy llamativos o estampados fuertes.
   </div>
 </section>
 
@@ -1271,7 +1294,34 @@ section.has-sec-waves{padding-top:84px;padding-bottom:86px}
 </section>
 
 
-<!-- ═══════════════ 11. FOOTER ═══════════════════════ -->
+<!-- ═══════════════ 11. RSVP ════════════════════════ -->
+<section id="rsvp">
+  <span class="lbl">Confirmación de asistencia</span>
+  <h2 class="ttl">¿Nos acompañas?</h2>
+  <div class="gline"></div>
+  <p class="rsvp-sub">
+    Confirma antes del<br>
+    <span class="rsvp-dl">18 de Junio de 2026</span>
+  </p>
+
+  <div class="rsvp-form-wrap">
+    <span class="rsvp-pass-lbl">Pases asignados</span>
+    <p class="rsvp-pases-num" id="rsvpPasesNum">1</p>
+    <span class="rsvp-pases-lbl" id="rsvpPasesLbl">persona</span>
+
+    <div class="rsvp-names-wrap" id="rsvpNamesWrap">
+      <!-- JS inyecta los inputs -->
+    </div>
+
+    <button type="button" onclick="sendRSVP()" class="btn btn-olive rsvp-submit-btn">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 12a19.79 19.79 0 01-3.07-8.67A2 2 0 012 1.27h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+      Confirmar asistencia
+    </button>
+  </div>
+</section>
+
+
+<!-- ═══════════════ 12. FOOTER ═══════════════════════ -->
 <footer id="footer">
   <div class="ft-orn">✦ · ✦ · ✦</div>
   <div class="ft-nms">Karen &amp; Manuel</div>
@@ -1510,10 +1560,13 @@ function scrollAnims() {
     }
   });
 
-  gsap.from(['#calendar .cal-sub', '#calBtn'], {
-    opacity: 0, y: 18, scale: .96, duration: .65, stagger: .14,
-    ease: 'back.out(1.3)',
+  gsap.from('#calendar .cal-sub', {
+    opacity: 0, y: 14, duration: .6, ease,
     scrollTrigger: { trigger: '#calendar', start: 'top 84%', once: true }
+  });
+  gsap.from('#calBtn', {
+    y: 14, duration: .55, ease: 'back.out(1.4)',
+    scrollTrigger: { trigger: '#calendar', start: 'top 85%', once: true }
   });
 
   buildTimelinePath();
@@ -1549,6 +1602,15 @@ function scrollAnims() {
   gsap.from('.fam-card', {
     opacity: 0, y: 20, duration: .55, stagger: .08, ease,
     scrollTrigger: { trigger: '#family', start: 'top 78%', once: true }
+  });
+
+  gsap.from('.alb-qr-frame', {
+    opacity: 0, y: 28, duration: .75, ease: 'back.out(1.3)',
+    scrollTrigger: { trigger: '#album', start: 'top 80%', once: true }
+  });
+  gsap.from(['.alb-btn', '.alb-hint'], {
+    opacity: 0, y: 16, duration: .55, stagger: .12, ease,
+    scrollTrigger: { trigger: '#album', start: 'top 78%', once: true }
   });
 
   gsap.from('.sobre-card', {
@@ -1667,7 +1729,7 @@ function sendRSVP() {
 
 /* ── INYECTAR ONDAS A SECCIONES ──────────────────────── */
 function addSectionWaves() {
-  const targets = ['calendar','itinerary','gifts','dresscode','family','gallery','rsvp'];
+  const targets = ['calendar','itinerary','album','gifts','dresscode','family','gallery','rsvp'];
   const footer  = document.getElementById('footer');
   const els = targets.map(id => document.getElementById(id)).filter(Boolean);
   if (footer) els.push(footer);
@@ -1699,6 +1761,7 @@ function addSectionMedals() {
   const map = {
     'calendar'  : '✧',
     'itinerary' : '❃',
+    'album'     : '◈',
     'gifts'     : '✦',
     'dresscode' : '❁',
     'family'    : '❖',
