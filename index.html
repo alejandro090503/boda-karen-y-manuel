@@ -132,18 +132,19 @@ section{padding:64px 22px}
 .h-bg img,
 .h-bg video{
   width:100%;height:100%;object-fit:cover;object-position:center 40%;
-  filter:brightness(.52) saturate(.55) contrast(1.12);
+  filter:brightness(.72) saturate(.6) contrast(1.06);
   display:block;
 }
 .h-ov{
   position:absolute;inset:0;z-index:1;
   background:
-    linear-gradient(to bottom, transparent 80%, var(--ink) 100%),
-    radial-gradient(ellipse 72% 56% at 50% 42%,
+    linear-gradient(to bottom, transparent 82%, var(--ink) 100%),
+    radial-gradient(ellipse 90% 75% at 50% 48%,
       transparent 0%,
-      rgba(0,0,0,.22) 32%,
-      rgba(0,0,0,.58) 60%,
-      rgba(0,0,0,.88) 100%);
+      transparent 45%,
+      rgba(30,38,8,.25) 65%,
+      rgba(20,28,5,.55) 82%,
+      rgba(15,22,3,.78) 100%);
 }
 .h-ov::after{
   content:'';position:absolute;
@@ -152,129 +153,27 @@ section{padding:64px 22px}
   background:radial-gradient(circle, rgba(255,255,255,.06) 0%, transparent 55%);
   pointer-events:none;
 }
-.h-frame{
-  position:absolute;top:20px;left:20px;right:20px;bottom:20px;
-  border:1px solid rgba(255,255,255,.18);z-index:2;pointer-events:none;
-  animation:frameBreathe 8s ease-in-out infinite;
-}
-.h-frame::before,.h-frame::after{
-  content:'✦';position:absolute;color:rgba(255,255,255,.5);font-size:11px;
-  opacity:.6;line-height:1;
-  background:transparent;padding:0 8px;
-}
-.h-frame::before{top:-6px;left:50%;transform:translateX(-50%)}
-.h-frame::after{bottom:-6px;left:50%;transform:translateX(-50%)}
-@keyframes frameBreathe{
-  0%,100%{opacity:.18;transform:scale(1)}
-  50%{opacity:.42;transform:scale(1.005)}
-}
-.h-rings{
-  position:absolute;left:50%;top:50%;
-  width:340px;height:340px;
-  transform:translate(-50%,-50%);
-  z-index:2;pointer-events:none;
-}
-.h-ring{
-  position:absolute;inset:0;
-  border-radius:50%;
-  border:1px solid rgba(255,255,255,.1);
-}
-.h-ring-1{inset:0;animation:hRingBreathe 7s ease-in-out infinite}
-.h-ring-2{inset:-36px;border-style:dashed;border-color:rgba(255,255,255,.07);animation:hRingRotate 60s linear infinite}
-.h-ring-3{inset:-78px;border-color:rgba(255,255,255,.05);animation:hRingBreathe 9s ease-in-out infinite reverse}
-@keyframes hRingBreathe{
-  0%,100%{transform:scale(1);opacity:.7}
-  50%{transform:scale(1.025);opacity:1}
-}
-@keyframes hRingRotate{to{transform:rotate(360deg)}}
-.h-wave{
-  position:absolute;left:0;right:0;height:48px;
-  pointer-events:none;overflow:hidden;z-index:2;
-}
-.h-wave-top{top:64px}
-.h-wave-bot{bottom:78px;transform:scaleY(-1)}
-.h-wave svg{
-  width:220%;height:100%;display:block;
-  animation:hWaveSlide 30s linear infinite;
-  will-change:transform;
-}
-.h-wave-bot svg{animation-duration:38s;animation-direction:reverse}
-@keyframes hWaveSlide{
-  from{transform:translateX(0)}
-  to  {transform:translateX(-50%)}
-}
-.h-particles{position:absolute;inset:0;z-index:3;overflow:hidden;pointer-events:none}
-.meteor{position:absolute;top:0;left:0;will-change:transform,opacity;overflow:visible}
 .h-cnt{
   position:relative;z-index:4;text-align:center;
   display:flex;flex-direction:column;align-items:center;
 }
-.h-we{
-  font-size:11px;letter-spacing:7px;text-transform:uppercase;
-  color:rgba(255,255,255,.8);font-weight:600;
-  text-shadow:0 1px 10px rgba(0,0,0,.5);
-}
-.h-div{display:flex;align-items:center;gap:14px;margin:20px 0 14px;width:100%;justify-content:center}
-.h-div::before,.h-div::after{content:'';flex:1;max-width:70px;height:1px;background:linear-gradient(to right,transparent,rgba(255,255,255,.4))}
-.h-div::after{background:linear-gradient(to left,transparent,rgba(255,255,255,.4))}
-.h-div-dot{font-size:10px;color:rgba(255,255,255,.5);letter-spacing:6px}
-.h-name-wrap{
-  display:flex;align-items:center;justify-content:center;
-  gap:12px;width:100%;
-  animation:hNameWind 11s ease-in-out infinite;
-  transform-origin:center center;
-}
-@keyframes hNameWind{
-  0%,100%{transform:translateX(0)}
-  25%   {transform:translateX(2px)}
-  50%   {transform:translateX(0)}
-  75%   {transform:translateX(-2px)}
-}
-.h-clip{overflow:hidden;line-height:1.1;padding:6px 0;flex:0 0 auto;}
-.h-name{
-  font-family:'Cormorant Garamond',serif;
-  font-weight:400;font-style:italic;font-size:56px;
-  letter-spacing:1px;color:rgba(255,255,255,.95);display:block;
-  text-shadow:
-    0 2px 24px rgba(0,0,0,.5),
-    0 4px 40px rgba(0,0,0,.25);
-  will-change:transform,filter;
-  transform-origin:center center;white-space:nowrap;
-}
-.h-amp-clip{overflow:visible;line-height:1.15;margin:6px 0 8px;padding:6px 0}
-.h-amp{
-  font-family:'Great Vibes',cursive;font-size:62px;
-  color:rgba(255,255,255,.75);display:block;
-  text-shadow:0 2px 20px rgba(0,0,0,.45);
-  will-change:transform;
-}
-.h-name-wind-line{
-  flex:0 1 56px;min-width:22px;height:1px;
-  background:linear-gradient(to right,transparent,rgba(255,255,255,.3),transparent);
-  opacity:0;animation:hWindLinePulse 5.5s ease-in-out infinite;
-}
-@keyframes hWindLinePulse{
-  0%,100%{opacity:0;transform:scaleX(.4)}
-  50%{opacity:.9;transform:scaleX(1)}
-}
 .h-monogram{
-  font-family:'Cormorant Garamond',serif;font-weight:300;
-  font-size:105px;letter-spacing:10px;line-height:1;
-  color:rgba(255,255,255,.88);
-  text-shadow:0 2px 30px rgba(0,0,0,.4);
-  margin-bottom:12px;
+  display:inline-block;position:relative;
+  line-height:1;margin-bottom:0;
+  text-shadow:0 2px 40px rgba(0,0,0,.35);
 }
-.h-date-wrap{margin-top:32px;position:relative}
-.h-date{
+.mono-k,.mono-m{
   font-family:'Cormorant Garamond',serif;
-  font-size:18px;letter-spacing:6px;text-transform:uppercase;
-  color:rgba(255,255,255,.88);font-weight:600;
-  text-shadow:0 1px 10px rgba(0,0,0,.5);
+  color:rgba(255,255,255,.92);
+  display:inline-block;vertical-align:top;
 }
-.h-city{
-  font-size:13px;letter-spacing:4px;text-transform:uppercase;font-weight:500;
-  color:rgba(255,255,255,.65);opacity:1;margin-top:10px;
-  text-shadow:0 1px 8px rgba(0,0,0,.45);
+.mono-k{
+  font-size:150px;font-weight:400;font-style:italic;
+  position:relative;z-index:2;
+}
+.mono-m{
+  font-size:150px;font-weight:400;
+  margin-left:-32px;position:relative;z-index:1;
 }
 .h-scroll{
   position:absolute;bottom:28px;left:50%;transform:translateX(-50%);
@@ -852,54 +751,9 @@ section.has-sec-waves{padding-top:84px;padding-bottom:86px}
     </video>
   </div>
   <div class="h-ov"></div>
-  <div class="h-frame"></div>
-
-  <div class="h-wave h-wave-top" aria-hidden="true">
-    <svg viewBox="0 0 1760 48" preserveAspectRatio="none">
-      <path d="M0,24 Q110,8 220,24 T440,24 T660,24 T880,24 T1100,24 T1320,24 T1540,24 T1760,24" fill="none" stroke="rgba(255,255,255,.2)" stroke-width="1"/>
-      <path d="M0,34 Q110,18 220,34 T440,34 T660,34 T880,34 T1100,34 T1320,34 T1540,34 T1760,34" fill="none" stroke="rgba(255,255,255,.1)" stroke-width=".8"/>
-    </svg>
-  </div>
-  <div class="h-wave h-wave-bot" aria-hidden="true">
-    <svg viewBox="0 0 1760 48" preserveAspectRatio="none">
-      <path d="M0,24 Q110,40 220,24 T440,24 T660,24 T880,24 T1100,24 T1320,24 T1540,24 T1760,24" fill="none" stroke="rgba(255,255,255,.2)" stroke-width="1"/>
-      <path d="M0,14 Q110,30 220,14 T440,14 T660,14 T880,14 T1100,14 T1320,14 T1540,14 T1760,14" fill="none" stroke="rgba(255,255,255,.1)" stroke-width=".8"/>
-    </svg>
-  </div>
-
-  <div class="h-rings" aria-hidden="true">
-    <div class="h-ring h-ring-1"></div>
-    <div class="h-ring h-ring-2"></div>
-    <div class="h-ring h-ring-3"></div>
-  </div>
-  <div class="h-particles" id="hPart"></div>
 
   <div class="h-cnt" id="hCnt">
-    <p class="h-monogram" id="hMono">KM</p>
-    <p class="h-we" id="hWe">Nos casamos</p>
-
-    <div class="h-div" id="hDiv">
-      <span class="h-div-dot">✦ · ✦</span>
-    </div>
-
-    <div class="h-name-wrap">
-      <span class="h-name-wind-line"></span>
-      <div class="h-clip"><span class="h-name h-name-wind" id="hN1">Karen</span></div>
-      <span class="h-name-wind-line"></span>
-    </div>
-    <div class="h-amp-clip"><span class="h-amp" id="hAmp">&amp;</span></div>
-    <div class="h-name-wrap">
-      <span class="h-name-wind-line"></span>
-      <div class="h-clip"><span class="h-name h-name-wind" id="hN2">Manuel</span></div>
-      <span class="h-name-wind-line"></span>
-    </div>
-
-    <div class="gline" style="margin-top:32px" id="hLine"></div>
-
-    <div class="h-date-wrap" id="hDate">
-      <p class="h-date">4 · Julio · 2026</p>
-      <p class="h-city">Metepec · Estado de México</p>
-    </div>
+    <p class="h-monogram" id="hMono"><span class="mono-k">K</span><span class="mono-m">M</span></p>
   </div>
 
   <div class="h-scroll" id="hScroll">
@@ -1405,7 +1259,6 @@ document.addEventListener('DOMContentLoaded', () => {
         addWindOrns();
         addAuras();
         heroAnim();
-        spawnParticles();
         initGlobalParticles();
         scrollAnims();
         countdown();
@@ -1434,19 +1287,13 @@ function toast(msg) {
 
 /* ── HERO ANIMATIONS ─────────────────────────────────── */
 function heroAnim() {
-  gsap.set(['#hWe','#hDiv','#hLine','#hDate','#hScroll'], { opacity: 0 });
-  gsap.set(['#hN1','#hN2','#hAmp'], { yPercent: 110 });
+  gsap.set('#hMono', { opacity: 0, scale: .85 });
+  gsap.set('#hScroll', { opacity: 0 });
 
   const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
   tl
-    .to('#hWe',    { opacity: 1, duration: .7 }, .1)
-    .to('#hDiv',   { opacity: 1, duration: .5 }, .3)
-    .to('#hN1',    { yPercent: 0, duration: 1 }, .45)
-    .to('#hAmp',   { yPercent: 0, duration: .8 }, .7)
-    .to('#hN2',    { yPercent: 0, duration: 1  }, .82)
-    .to('#hLine',  { opacity: .7, duration: .6 }, 1.15)
-    .to('#hDate',  { opacity: 1, duration: .7  }, 1.28)
-    .to('#hScroll',{ opacity: 1, duration: .5  }, 1.7);
+    .to('#hMono',  { opacity: 1, scale: 1, duration: 1.2 }, .2)
+    .to('#hScroll',{ opacity: 1, duration: .5 }, 1.4);
 
   gsap.to('#heroBg', {
     yPercent: 22, ease: 'none',
@@ -1454,87 +1301,6 @@ function heroAnim() {
   });
 }
 
-/* ── PARTÍCULAS · METEORITOS OLIVO ───────────────────── */
-function spawnParticles() {
-  const c = document.getElementById('hPart');
-  if (!c) return;
-
-  const state = { W: 0, H: 0, floor: 0, particles: [], MAX_TOTAL: 46 };
-
-  function measure() {
-    const r = c.getBoundingClientRect();
-    state.W = r.width; state.H = r.height; state.floor = r.height - 12;
-  }
-  measure();
-  window.addEventListener('resize', measure, { passive: true });
-
-  function create(opts = {}) {
-    if (state.particles.length >= state.MAX_TOTAL) return;
-    const sz  = 7 + Math.random() * 6;
-    const brt = 0.7 + Math.random() * 0.3;
-    const col1 = `rgba(255,255,255,${(brt*.7).toFixed(2)})`;
-    const col2 = `rgba(255,255,255,${(brt*.35).toFixed(2)})`;
-    const el = document.createElementNS('http://www.w3.org/2000/svg','svg');
-    el.setAttribute('viewBox','0 0 24 24');
-    el.setAttribute('width', sz + 'px');
-    el.setAttribute('height', sz + 'px');
-    el.setAttribute('class','meteor');
-    el.innerHTML = `<polygon points="12,2 14.9,9.2 22.6,9.2 16.4,13.8 18.8,21 12,16.4 5.2,21 7.6,13.8 1.4,9.2 9.1,9.2" fill="${col1}" stroke="${col2}" stroke-width="0.4"/>`;
-    Object.assign(el.style, {
-      filter: `drop-shadow(0 0 3px rgba(255,255,255,${(brt*.4).toFixed(2)}))`,
-      overflow: 'visible', opacity: 0,
-    });
-    c.appendChild(el);
-    const p = {
-      el, sz,
-      x: opts.x !== undefined ? opts.x : Math.random() * state.W,
-      y: opts.y !== undefined ? opts.y : -12,
-      vx: opts.vx !== undefined ? opts.vx : (Math.random() - 0.5) * 0.25,
-      vy: opts.vy !== undefined ? opts.vy : 0.35 + Math.random() * 0.5,
-      brt, opacity: 0, targetOpacity: brt, bouncesLeft: 2, fading: false, fade: 1,
-    };
-    state.particles.push(p);
-    return p;
-  }
-
-  function step() {
-    const G = 0.028, AIR = 0.998, REST = 0.22, FRIC = 0.72, FADE_RATE = 0.012;
-    const floor = state.floor;
-    for (let i = state.particles.length - 1; i >= 0; i--) {
-      const p = state.particles[i];
-      if (!p.fading && p.opacity < p.targetOpacity) p.opacity = Math.min(p.targetOpacity, p.opacity + 0.03);
-      if (p.fading) {
-        p.fade -= FADE_RATE;
-        if (p.fade <= 0) { p.el.remove(); state.particles.splice(i, 1); continue; }
-      }
-      p.vy += G; p.vx *= AIR; p.x += p.vx; p.y += p.vy;
-      if (p.x < p.sz / 2) { p.x = p.sz / 2; p.vx = Math.abs(p.vx) * 0.5; }
-      if (p.x > state.W - p.sz / 2) { p.x = state.W - p.sz / 2; p.vx = -Math.abs(p.vx) * 0.5; }
-      const floorY = floor - p.sz / 2;
-      if (p.y >= floorY) {
-        p.y = floorY;
-        if (p.bouncesLeft > 0 && Math.abs(p.vy) > 0.35) {
-          p.vy = -Math.abs(p.vy) * REST; p.vx *= FRIC; p.bouncesLeft--;
-        } else { p.vy = 0; p.vx *= 0.85; if (!p.fading) p.fading = true; }
-      }
-      p.el.style.transform = `translate(${p.x - p.sz/2}px, ${p.y - p.sz/2}px)`;
-      p.el.style.opacity = (p.opacity * p.fade).toFixed(3);
-    }
-    requestAnimationFrame(step);
-  }
-
-  for (let i = 0; i < 14; i++) setTimeout(() => create(), i * 220);
-  function channel(min, max, startDelay) {
-    setTimeout(function tick() {
-      create();
-      setTimeout(tick, min + Math.random() * (max - min));
-    }, startDelay);
-  }
-  channel(280, 620, 1600);
-  channel(380, 820, 2000);
-  channel(520, 1100, 2400);
-  requestAnimationFrame(step);
-}
 
 /* ── PARTÍCULAS GLOBALES (bokeh flotante) ─────────────── */
 function initGlobalParticles() {
