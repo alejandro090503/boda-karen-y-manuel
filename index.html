@@ -815,7 +815,7 @@ section.has-sec-waves{padding-top:84px;padding-bottom:86px}
   <img id="galLightboxImg" src="" alt="Foto Karen y Manuel">
 </div>
 
-<audio id="bgMusic" loop preload="none">
+<audio id="bgMusic" loop preload="auto">
   <source src="cancion.mp3" type="audio/mpeg">
 </audio>
 
@@ -1762,16 +1762,36 @@ function countdown() {
 const aud = document.getElementById('bgMusic');
 const mBtn = document.getElementById('musicBtn');
 let playing = false;
+
+function startMusic() {
+  if (playing) return;
+  aud.play().then(() => {
+    playing = true;
+    mBtn.classList.add('on');
+  }).catch(() => {});
+}
+
 function toggleMusic() {
   if (playing) {
     aud.pause();
     mBtn.classList.remove('on');
+    playing = false;
   } else {
-    aud.play().catch(()=>{});
-    mBtn.classList.add('on');
+    startMusic();
   }
-  playing = !playing;
 }
+
+// Intentar autoplay directo; si el navegador lo bloquea, arrancar al primer toque
+aud.play().then(() => {
+  playing = true;
+  mBtn.classList.add('on');
+}).catch(() => {
+  const onFirstInteraction = () => {
+    startMusic();
+  };
+  document.addEventListener('touchstart', onFirstInteraction, { once: true, passive: true });
+  document.addEventListener('click',      onFirstInteraction, { once: true });
+});
 
 /* ── RSVP · PASES ────────────────────────────────────── */
 const WA = '527292714302';
