@@ -1358,6 +1358,7 @@ document.addEventListener('DOMContentLoaded', () => {
         addAuras();
         heroAnim();
         spawnParticles();
+        initGlobalParticles();
         scrollAnims();
         countdown();
         setInterval(countdown, 1000);
@@ -1485,6 +1486,59 @@ function spawnParticles() {
   channel(380, 820, 2000);
   channel(520, 1100, 2400);
   requestAnimationFrame(step);
+}
+
+/* ── PARTÍCULAS GLOBALES (bokeh flotante) ─────────────── */
+function initGlobalParticles() {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const cvs = document.createElement('canvas');
+  cvs.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:500;';
+  document.body.appendChild(cvs);
+  const ctx = cvs.getContext('2d');
+  const COLS = ['rgba(111,118,10,','rgba(212,197,178,','rgba(79,85,4,','rgba(160,168,20,'];
+  let W, H;
+  const COUNT = 34;
+  const pts = [];
+
+  function resize() {
+    W = cvs.width  = window.innerWidth;
+    H = cvs.height = window.innerHeight;
+  }
+
+  function spawn(anywhere) {
+    const a = (0.055 + Math.random() * 0.12).toFixed(2);
+    return {
+      x: Math.random() * (W || 420),
+      y: anywhere ? Math.random() * (H || 750) : (H || 750) + 10,
+      r: 1.1 + Math.random() * 3.8,
+      vx: (Math.random() - 0.5) * 0.13,
+      vy: -(0.09 + Math.random() * 0.2),
+      fill: COLS[Math.floor(Math.random() * COLS.length)] + a + ')',
+      ph: Math.random() * Math.PI * 2,
+    };
+  }
+
+  resize();
+  window.addEventListener('resize', resize, { passive: true });
+  for (let i = 0; i < COUNT; i++) pts.push(spawn(true));
+
+  (function tick() {
+    ctx.clearRect(0, 0, W, H);
+    for (let i = pts.length - 1; i >= 0; i--) {
+      const p = pts[i];
+      p.ph += 0.006;
+      p.x  += p.vx + Math.sin(p.ph) * 0.08;
+      p.y  += p.vy;
+      if (p.y < -8)      Object.assign(pts[i], spawn(false));
+      if (p.x < -8)      p.x = W + 4;
+      if (p.x > W + 8)   p.x = -4;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = p.fill;
+      ctx.fill();
+    }
+    requestAnimationFrame(tick);
+  })();
 }
 
 /* ── ITINERARY · CAMINO EN S ──────────────────────────── */
