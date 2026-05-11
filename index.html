@@ -512,7 +512,7 @@ section{padding:64px 22px}
 .timeline{margin-top:44px;position:relative;padding:18px 0 6px;min-height:400px;}
 .tl-svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;overflow:visible;}
 .tl-svg-bg{stroke:rgba(111,118,10,.18);stroke-width:1;fill:none;stroke-dasharray:2 5;}
-.tl-svg-path{stroke:var(--peach);stroke-width:1.6;stroke-linecap:round;fill:none;filter:drop-shadow(0 0 7px rgba(165,232,50,1)) drop-shadow(0 0 22px rgba(145,215,40,.65));}
+.tl-svg-path{stroke:var(--peach);stroke-width:2.2;stroke-linecap:round;fill:none;}
 .tl-row{position:relative;z-index:1;min-height:158px;display:flex;align-items:center;margin-bottom:14px;}
 .tl-row[data-side="left"]{padding-left:58px;padding-right:44%;justify-content:flex-start;text-align:left;}
 .tl-row[data-side="right"]{padding-right:58px;padding-left:44%;justify-content:flex-end;text-align:right;}
@@ -1085,8 +1085,25 @@ section.has-sec-waves{padding-top:84px;padding-bottom:86px}
   <div class="gline"></div>
   <div class="timeline" id="tlWrap">
     <svg class="tl-svg" id="tlSvg" preserveAspectRatio="none" aria-hidden="true">
+      <defs>
+        <filter id="tlGlowFilter" x="-40%" y="-40%" width="180%" height="180%">
+          <feGaussianBlur in="SourceGraphic" stdDeviation="5" result="blur1"/>
+          <feGaussianBlur in="SourceGraphic" stdDeviation="14" result="blur2"/>
+          <feColorMatrix in="blur1" type="matrix"
+            values="0 0.55 0.08 0 0   0 0.82 0.12 0 0   0 0.16 0.02 0 0   0 0 0 1 0"
+            result="green1"/>
+          <feColorMatrix in="blur2" type="matrix"
+            values="0 0.45 0.06 0 0   0 0.70 0.10 0 0   0 0.10 0.01 0 0   0 0 0 0.55 0"
+            result="green2"/>
+          <feMerge>
+            <feMergeNode in="green2"/>
+            <feMergeNode in="green1"/>
+            <feMergeNode in="SourceGraphic"/>
+          </feMerge>
+        </filter>
+      </defs>
       <path class="tl-svg-bg"   id="tlPathBg"/>
-      <path class="tl-svg-path" id="tlPath"/>
+      <path class="tl-svg-path" id="tlPath" filter="url(#tlGlowFilter)"/>
     </svg>
 
     <div class="tl-row" data-side="left">
@@ -1657,21 +1674,25 @@ function scrollAnims() {
 
   buildTimelinePath();
   ScrollTrigger.create({
-    trigger: '#itinerary', start: 'top 78%', end: 'bottom 58%', scrub: 0.6,
-    onUpdate(self) {
+    trigger: '#itinerary', start: 'top 68%', once: true,
+    onEnter() {
       const data = window.__tlData;
       if (!data) return;
       const { path, len, rows } = data;
-      path.style.strokeDashoffset = len * (1 - self.progress);
-      const n = Math.ceil(self.progress * rows.length);
-      rows.forEach((r, i) => r.classList.toggle('on', i < n));
-    },
-    onLeave() {
-      const data = window.__tlData;
-      if (!data) return;
-      const { path, rows } = data;
-      path.style.strokeDashoffset = 0;
-      rows.forEach(r => r.classList.add('on'));
+      const obj = { v: len };
+      gsap.to(obj, {
+        v: 0, duration: 3.6, ease: 'power1.inOut',
+        onUpdate() {
+          path.style.strokeDashoffset = obj.v;
+          const progress = (len - obj.v) / len;
+          const n = Math.ceil(progress * rows.length);
+          rows.forEach((r, i) => r.classList.toggle('on', i < n));
+        },
+        onComplete() {
+          path.style.strokeDashoffset = 0;
+          rows.forEach(r => r.classList.add('on'));
+        }
+      });
     }
   });
 
