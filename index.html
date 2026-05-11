@@ -200,6 +200,62 @@ section{padding:64px 22px}
   100%{transform:scaleY(1);opacity:0}
 }
 
+/* ── FECHA ────────────────────────────────────────────── */
+#fecha{
+  background:var(--ink2);
+  padding:52px 24px;
+  position:relative;overflow:hidden;
+}
+#fecha::before{
+  content:'';position:absolute;pointer-events:none;
+  top:-30px;left:-30px;width:140px;height:140px;
+  background:
+    radial-gradient(circle, rgba(111,118,10,.07) 0%, transparent 65%);
+}
+.fch-wrap{
+  display:flex;align-items:center;gap:0;
+}
+.fch-left{
+  flex:1;text-align:right;padding-right:24px;
+}
+.fch-n1{
+  font-family:'Le Major','Bodoni Moda',serif;
+  font-size:clamp(38px,10vw,50px);font-weight:400;
+  color:var(--cream);line-height:1.1;
+}
+.fch-full{
+  font-family:'Cormorant Garamond',serif;
+  font-size:12px;font-weight:500;letter-spacing:1.5px;
+  color:rgba(56,87,26,.55);margin-bottom:10px;
+  text-transform:uppercase;
+}
+.fch-amp{
+  font-family:'Great Vibes',cursive;
+  font-size:34px;color:var(--peach);
+  display:block;margin:4px 0 10px;line-height:1;
+}
+.fch-line{
+  width:1px;flex-shrink:0;align-self:stretch;
+  background:linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(56,87,26,.25) 15%,
+    rgba(56,87,26,.25) 85%,
+    transparent 100%
+  );
+}
+.fch-right{
+  flex:0 0 auto;padding-left:24px;
+  display:flex;flex-direction:column;align-items:flex-start;
+  gap:0;
+}
+.fch-num{
+  font-family:'Cormorant Garamond',serif;
+  font-weight:400;font-size:clamp(54px,14vw,74px);
+  line-height:.92;color:#b8a99a;
+  display:block;letter-spacing:-2px;
+}
+
 /* ── COUNTDOWN ────────────────────────────────────────── */
 #countdown{
   position:relative;overflow:hidden;padding:0;
@@ -234,17 +290,7 @@ section{padding:64px 22px}
   padding:64px 20px 60px;
   text-align:center;
 }
-.cd-deco{
-  width:48px;height:1px;
-  background:linear-gradient(to right, transparent, rgba(212,197,178,.5), transparent);
-  margin:0 auto 20px;
-}
-.cd-date-txt{
-  font-family:'Cormorant Garamond',serif;
-  font-size:13px;font-weight:500;letter-spacing:6px;
-  color:rgba(212,197,178,.75);text-transform:uppercase;
-  margin-bottom:32px;
-}
+
 .cd-row{
   display:flex;align-items:flex-start;justify-content:center;
   gap:0;width:100%;
@@ -770,11 +816,28 @@ section.has-sec-waves{padding-top:84px;padding-bottom:86px}
 </section>
 
 
+<!-- ═══════════════ 1.5. FECHA ══════════════════════════ -->
+<section id="fecha">
+  <div class="fch-wrap">
+    <div class="fch-left">
+      <p class="fch-n1">Karen</p>
+      <p class="fch-full">Acosta Gómez</p>
+      <p class="fch-amp">&amp;</p>
+      <p class="fch-n1">Manuel</p>
+      <p class="fch-full">del Valle Merino</p>
+    </div>
+    <div class="fch-line" aria-hidden="true"></div>
+    <div class="fch-right">
+      <span class="fch-num">04</span>
+      <span class="fch-num">07</span>
+      <span class="fch-num">26</span>
+    </div>
+  </div>
+</section>
+
 <!-- ═══════════════ 2. CUENTA REGRESIVA ══════════════ -->
 <section id="countdown">
   <div class="cd-content">
-    <div class="cd-deco" aria-hidden="true"></div>
-    <p class="cd-date-txt">4 · Julio · 2026</p>
     <div class="cd-row" role="timer" aria-label="Cuenta regresiva para la boda">
       <div class="cd-cell">
         <span class="cd-num" id="cd-d">--</span>
