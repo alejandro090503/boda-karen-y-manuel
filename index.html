@@ -393,83 +393,66 @@ section{padding:64px 22px}
 .cal-sub{font-size:16px;color:var(--cream);opacity:.72;line-height:1.7;margin:14px 0 28px;font-weight:500;}
 
 /* ── ITINERARY ────────────────────────────────────────── */
-#itinerary{background:var(--ink);overflow:hidden}
-.timeline{margin-top:44px;position:relative;padding:18px 0 6px;min-height:400px;}
-.tl-svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;overflow:visible;}
-.tl-svg-bg{stroke:rgba(111,118,10,.18);stroke-width:1;fill:none;stroke-dasharray:2 5;}
-.tl-svg-glow-outer{stroke:rgba(111,118,10,.05);stroke-width:22;stroke-linecap:round;fill:none;}
-.tl-svg-glow-mid{stroke:rgba(111,118,10,.12);stroke-width:12;stroke-linecap:round;fill:none;}
-.tl-svg-glow-core{stroke:rgba(111,118,10,.25);stroke-width:5;stroke-linecap:round;fill:none;}
-.tl-svg-path{stroke:var(--peach);stroke-width:2;stroke-linecap:round;fill:none;}
-.tl-row{position:relative;z-index:1;min-height:158px;display:flex;align-items:center;margin-bottom:14px;}
-.tl-row[data-side="left"]{padding-left:58px;padding-right:44%;justify-content:flex-start;text-align:left;}
-.tl-row[data-side="right"]{padding-right:58px;padding-left:44%;justify-content:flex-end;text-align:right;}
-.tl-row-inner{max-width:168px;display:flex;flex-direction:column;gap:2px;position:relative;padding:6px 4px;}
-.tl-row-inner::before{
-  content:'';position:absolute;inset:-6px -14px;
-  background:radial-gradient(ellipse at center,rgba(255,255,255,.92) 0%,rgba(255,255,255,.55) 55%,rgba(255,255,255,0) 100%);
-  z-index:-1;border-radius:16px;pointer-events:none;
+#itinerary{background:#929b6d;overflow:hidden;padding:64px 22px;}
+.it-title{
+  font-family:'Great Vibes',cursive;font-size:clamp(40px,10vw,52px);
+  color:#fff;text-align:center;margin-bottom:36px;line-height:1.1;
 }
-.tl-t{font-family:'Cormorant Garamond',serif;font-size:13px;color:var(--peach);letter-spacing:2.5px;text-transform:uppercase;line-height:1;font-weight:600;}
-.tl-ev{font-family:'Cormorant Garamond',serif;font-size:19px;color:var(--cream);font-weight:500;line-height:1.22;margin-top:4px;}
-.tl-de{font-size:13px;color:var(--cream);opacity:.62;line-height:1.55;margin-top:3px;font-weight:500;}
-.tl-row-inner > *{opacity:0;transform:translateY(8px);transition:opacity .55s var(--smooth), transform .55s var(--smooth);}
-.tl-row[data-side="left"] .tl-row-inner > *{transform:translateY(8px) translateX(-6px)}
-.tl-row[data-side="right"] .tl-row-inner > *{transform:translateY(8px) translateX(6px)}
-.tl-row.on .tl-row-inner > *{opacity:1;transform:translateY(0) translateX(0)}
-.tl-row.on .tl-t {transition-delay:.08s}
-.tl-row.on .tl-ev{transition-delay:.20s}
-.tl-row.on .tl-de{transition-delay:.32s}
-.tl-dot{position:absolute;top:50%;width:14px;height:14px;margin-top:-7px;border-radius:50%;background:var(--ink);border:1.5px solid var(--peach);transform:scale(0);transition:transform .55s var(--spring), box-shadow .55s, background .55s;z-index:2;}
-.tl-row[data-side="left"]  .tl-dot{left:22px}
-.tl-row[data-side="right"] .tl-dot{right:22px}
-.tl-row.on .tl-dot{transform:scale(1);background:var(--peach);box-shadow:0 0 0 3px rgba(255,255,255,.85),0 0 8px rgba(111,118,10,.45),0 0 22px rgba(111,118,10,.15);}
-.tl-orn{position:absolute;top:50%;width:40px;height:40px;margin-top:-20px;border-radius:50%;border:1px dashed rgba(111,118,10,.25);opacity:0;animation:tlOrnRotate 22s linear infinite;transition:opacity .9s ease;pointer-events:none;z-index:1;}
-.tl-row[data-side="left"]  .tl-orn{left:9px}
-.tl-row[data-side="right"] .tl-orn{right:9px}
-.tl-row.on .tl-orn{opacity:1}
-@keyframes tlOrnRotate{to{transform:rotate(360deg)}}
-.tl-pulse{position:absolute;top:50%;width:18px;height:18px;margin-top:-9px;border-radius:50%;border:1.5px solid var(--peach);opacity:0;pointer-events:none;z-index:1;}
-.tl-row[data-side="left"]  .tl-pulse{left:20px}
-.tl-row[data-side="right"] .tl-pulse{right:20px}
-.tl-row.on .tl-pulse{animation:tlPulse 2.8s ease-out 1}
-@keyframes tlPulse{0%{transform:scale(1);opacity:.85}100%{transform:scale(3);opacity:0}}
+.it-line{
+  position:relative;display:flex;flex-direction:column;align-items:center;
+  padding:0;
+}
+.it-line::before{
+  content:'';position:absolute;top:0;bottom:0;left:50%;
+  width:2px;background:rgba(56,87,26,.4);transform:translateX(-50%);
+}
+.it-step{
+  position:relative;width:100%;display:flex;align-items:center;
+  min-height:90px;
+}
+.it-left,.it-right{flex:1;padding:8px 0;}
+.it-left{text-align:right;padding-right:40px;}
+.it-right{text-align:left;padding-left:40px;}
+.it-circle{
+  width:54px;height:54px;border-radius:50%;flex-shrink:0;
+  background:rgba(56,87,26,.25);
+  display:flex;align-items:center;justify-content:center;
+  position:relative;z-index:2;
+}
+.it-circle svg{width:28px;height:28px;}
+.it-label{
+  font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-size:17px;font-weight:500;color:#fff;line-height:1.3;
+}
+.it-time{
+  font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-size:17px;font-weight:400;color:rgba(255,255,255,.8);
+}
 
 /* ── DRESSCODE ────────────────────────────────────────── */
-#dresscode{background:var(--ink2)}
-.dc-sub{text-align:center;font-size:17px;color:var(--cream);opacity:.75;line-height:1.7;margin:14px 0 32px;font-weight:500;}
-.palette{display:flex;justify-content:center;flex-wrap:wrap;gap:16px;margin-bottom:30px}
-.pal-item{text-align:center;cursor:pointer}
-.pal-sw{
-  width:52px;height:52px;border-radius:50%;margin:0 auto 8px;
-  border:2px solid rgba(255,255,255,.12);
-  box-shadow:0 6px 20px rgba(0,0,0,.25);will-change:transform;
-  transition:transform .45s cubic-bezier(.34,1.56,.64,1),box-shadow .3s !important;
+#dresscode{background:#929b6d;overflow:hidden;padding:64px 22px;}
+.dc-title{
+  font-family:'Great Vibes',cursive;font-size:clamp(36px,9vw,48px);
+  color:#fff;text-align:center;margin-bottom:32px;line-height:1.1;
 }
-.pal-sw:active{transform:scale(1.18)!important}
-.pal-sw:hover{transform:scale(1.3) translateY(-4px)!important;box-shadow:0 12px 30px rgba(0,0,0,.4),0 0 24px rgba(111,118,10,.25)!important;}
-.pal-nm{font-size:9px;letter-spacing:1px;text-transform:uppercase;color:var(--cream);opacity:.55;font-weight:600;}
-.dc-note{
-  background:rgba(111,118,10,.06);border-left:2px solid var(--peach);
-  padding:18px 18px;border-radius:0 8px 8px 0;margin-top:8px;
-  font-size:15px;color:var(--cream);opacity:.78;line-height:1.8;font-weight:500;
+.dc-outfits{
+  display:flex;align-items:flex-end;justify-content:center;
+  gap:24px;margin:0 auto 36px;max-width:300px;
 }
-.dc-note strong{font-family:'Cormorant Garamond',serif;font-size:16px;color:var(--peach);font-weight:600;display:block;margin-bottom:6px}
-.dc-cols{
-  display:flex;gap:0;margin:8px 0 20px;
-  border:1px solid rgba(111,118,10,.2);border-radius:16px;
-  overflow:hidden;background:rgba(245,248,235,.3);
+.dc-outfit{display:flex;flex-direction:column;align-items:center;}
+.dc-outfit svg{height:160px;width:auto;}
+.dc-type-txt{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(22px,6vw,30px);font-weight:400;
+  letter-spacing:6px;text-transform:uppercase;
+  color:#fff;text-align:center;margin-bottom:24px;
 }
-.dc-col{flex:1;padding:32px 14px 28px;text-align:center}
-.dc-col:first-child{border-right:1px solid rgba(111,118,10,.15)}
-.dc-col-ico{
-  width:90px;height:90px;margin:0 auto 18px;
-  background:rgba(111,118,10,.06);
-  border-radius:50%;display:flex;align-items:center;justify-content:center;
-  border:1px solid rgba(111,118,10,.18);
+.dc-msg{
+  font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-size:18px;font-weight:400;color:rgba(255,255,255,.88);
+  text-align:center;line-height:1.7;max-width:340px;margin:0 auto;
 }
-.dc-col-ico svg{width:56px;height:56px;color:var(--peach)}
-.dc-col-ttl{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:15px;letter-spacing:3px;text-transform:uppercase;color:var(--cream);margin-bottom:0;}
+.dc-msg + .dc-msg{margin-top:18px;}
 
 /* ── ALBUM QR ─────────────────────────────────────────── */
 #album{background:var(--ink)}
@@ -886,66 +869,96 @@ section.has-sec-waves{padding-top:84px;padding-bottom:86px}
 
 <!-- ═══════════════ 5. ITINERARIO ════════════════════ -->
 <section id="itinerary">
-  <span class="lbl">El gran día</span>
-  <h2 class="ttl">Itinerario</h2>
-  <div class="gline"></div>
-  <div class="timeline" id="tlWrap">
-    <svg class="tl-svg" id="tlSvg" preserveAspectRatio="none" aria-hidden="true">
-      <path class="tl-svg-bg"         id="tlPathBg"/>
-      <path class="tl-svg-glow-outer" id="tlGlowOuter"/>
-      <path class="tl-svg-glow-mid"   id="tlGlowMid"/>
-      <path class="tl-svg-glow-core"  id="tlGlowCore"/>
-      <path class="tl-svg-path"       id="tlPath"/>
-    </svg>
+  <p class="it-title">Itinerario</p>
+  <div class="it-line">
 
-    <div class="tl-row" data-side="left">
-      <div class="tl-orn"></div><div class="tl-pulse"></div><div class="tl-dot"></div>
-      <div class="tl-row-inner">
-        <p class="tl-t">2:00 PM</p>
-        <p class="tl-ev">Ceremonia Religiosa</p>
-        <p class="tl-de">Metepec · Estado de México</p>
+    <div class="it-step">
+      <div class="it-left"><span class="it-label">Ceremonia</span></div>
+      <div class="it-circle">
+        <svg viewBox="0 0 32 32" fill="none" stroke="#38571a" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M16 4v6M10 10l6-3 6 3M8 10v16h16V10M13 26v-8h6v8"/>
+          <circle cx="16" cy="16" r="2"/>
+        </svg>
       </div>
+      <div class="it-right"><span class="it-time">2:00 pm</span></div>
     </div>
-    <div class="tl-row" data-side="right">
-      <div class="tl-orn"></div><div class="tl-pulse"></div><div class="tl-dot"></div>
-      <div class="tl-row-inner">
-        <p class="tl-t">~4:00 PM</p>
-        <p class="tl-ev">Ceremonia Civil</p>
-        <p class="tl-de">Hora tentativa</p>
+
+    <div class="it-step">
+      <div class="it-left"><span class="it-time">4:00 pm</span></div>
+      <div class="it-circle">
+        <svg viewBox="0 0 32 32" fill="none" stroke="#38571a" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="14" r="6"/><circle cx="20" cy="14" r="6"/>
+          <path d="M16 8v-2M14 5h4"/>
+        </svg>
       </div>
+      <div class="it-right"><span class="it-label">Ceremonia Civil</span></div>
     </div>
-    <div class="tl-row" data-side="left">
-      <div class="tl-orn"></div><div class="tl-pulse"></div><div class="tl-dot"></div>
-      <div class="tl-row-inner">
-        <p class="tl-t">~4:30 PM</p>
-        <p class="tl-ev">Recepción</p>
-        <p class="tl-de">Hora tentativa</p>
+
+    <div class="it-step">
+      <div class="it-left"><span class="it-label">Recepción</span></div>
+      <div class="it-circle">
+        <svg viewBox="0 0 32 32" fill="none" stroke="#38571a" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M10 18c0-6 3-10 6-14M22 18c0-6-3-10-6-14"/>
+          <ellipse cx="10" cy="19" rx="4" ry="2"/><ellipse cx="22" cy="19" rx="4" ry="2"/>
+          <line x1="10" y1="21" x2="10" y2="27"/><line x1="22" y1="21" x2="22" y2="27"/>
+          <ellipse cx="10" cy="28" rx="5" ry="1.5"/><ellipse cx="22" cy="28" rx="5" ry="1.5"/>
+        </svg>
       </div>
+      <div class="it-right"><span class="it-time">4:30 pm</span></div>
     </div>
-    <div class="tl-row" data-side="right">
-      <div class="tl-orn"></div><div class="tl-pulse"></div><div class="tl-dot"></div>
-      <div class="tl-row-inner">
-        <p class="tl-t">Comida</p>
-        <p class="tl-ev">Banquete</p>
-        <p class="tl-de">Menú especial para los novios</p>
+
+    <div class="it-step">
+      <div class="it-left"><span class="it-time">5:30 pm</span></div>
+      <div class="it-circle">
+        <svg viewBox="0 0 32 32" fill="none" stroke="#38571a" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="16" cy="16" r="8"/>
+          <path d="M13 13l3 3 3-3M12 20h8"/>
+          <line x1="16" y1="16" x2="16" y2="20"/>
+        </svg>
       </div>
+      <div class="it-right"><span class="it-label">Cena</span></div>
     </div>
-    <div class="tl-row" data-side="left">
-      <div class="tl-orn"></div><div class="tl-pulse"></div><div class="tl-dot"></div>
-      <div class="tl-row-inner">
-        <p class="tl-t">Brindis</p>
-        <p class="tl-ev">Por los novios</p>
-        <p class="tl-de">Por Karen &amp; Manuel · Por el amor</p>
+
+    <div class="it-step">
+      <div class="it-left"><span class="it-label">Primer Baile</span></div>
+      <div class="it-circle">
+        <svg viewBox="0 0 32 32" fill="none" stroke="#38571a" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="13" cy="8" r="3"/><circle cx="20" cy="9" r="2.5"/>
+          <path d="M10 14c0 0 2 12 3 14M16 14c0 0-1 8-1 14"/>
+          <path d="M17 14c0 0 2 8 2 14M23 13c0 0 0 8-1 14"/>
+          <path d="M10 14h6M17 13h6"/>
+        </svg>
       </div>
+      <div class="it-right"><span class="it-time">7:00 pm</span></div>
     </div>
-    <div class="tl-row" data-side="right">
-      <div class="tl-orn"></div><div class="tl-pulse"></div><div class="tl-dot"></div>
-      <div class="tl-row-inner">
-        <p class="tl-t">Baile</p>
-        <p class="tl-ev">¡A la pista!</p>
-        <p class="tl-de">¡Que comience la celebración!</p>
+
+    <div class="it-step">
+      <div class="it-left"><span class="it-time">8:00 pm</span></div>
+      <div class="it-circle">
+        <svg viewBox="0 0 32 32" fill="none" stroke="#38571a" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="10" y="20" width="12" height="6" rx="1"/>
+          <rect x="12" y="15" width="8" height="5" rx="1"/>
+          <rect x="14" y="11" width="4" height="4" rx="1"/>
+          <line x1="10" y1="23" x2="22" y2="23"/>
+          <path d="M16 11v-3M14 9h4"/>
+        </svg>
       </div>
+      <div class="it-right"><span class="it-label">Brindis y Pastel</span></div>
     </div>
+
+    <div class="it-step">
+      <div class="it-left"><span class="it-label">¡A Bailar!</span></div>
+      <div class="it-circle">
+        <svg viewBox="0 0 32 32" fill="none" stroke="#38571a" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 8c2-2 4-2 4 1s-2 4-4 6"/>
+          <path d="M20 8c-2-2-4-2-4 1s2 4 4 6"/>
+          <path d="M10 18c1 3 3 6 6 8M22 18c-1 3-3 6-6 8"/>
+          <circle cx="16" cy="26" r="1"/>
+        </svg>
+      </div>
+      <div class="it-right"><span class="it-time">9:00 pm</span></div>
+    </div>
+
   </div>
 </section>
 
@@ -1010,62 +1023,40 @@ section.has-sec-waves{padding-top:84px;padding-bottom:86px}
 
 <!-- ═══════════════ 8. DRESS CODE ════════════════════ -->
 <section id="dresscode">
-  <span class="lbl">Vestimenta</span>
-  <h2 class="ttl">Código de Vestimenta</h2>
-  <div class="gline"></div>
-  <p class="dc-sub"><em style="font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:500">Formal · Semiformal</em></p>
+  <p class="dc-title">Código de Vestimenta</p>
 
-  <div class="dc-cols">
-    <!-- Caballeros -->
-    <div class="dc-col">
-      <div class="dc-col-ico">
-        <svg viewBox="0 0 40 68" fill="none" stroke="currentColor" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round">
-          <!-- Head -->
-          <circle cx="20" cy="7.5" r="6.5"/>
-          <!-- Collar -->
-          <path d="M16.5 14 L16.5 17.5 M23.5 14 L23.5 17.5"/>
-          <!-- Jacket body -->
-          <path d="M20 17.5 L10 23 L8.5 54 H31.5 L30 23 Z"/>
-          <!-- Left lapel -->
-          <path d="M20 17.5 L12.5 26.5 L17.5 29"/>
-          <!-- Right lapel -->
-          <path d="M20 17.5 L27.5 26.5 L22.5 29"/>
-          <!-- Tie -->
-          <path d="M17.5 23 L20 34 L22.5 23"/>
-          <!-- Trouser legs -->
-          <path d="M8.5 54 L10.5 68 H18.5 L20 61 L21.5 68 H29.5 L31.5 54"/>
-        </svg>
-      </div>
-      <p class="dc-col-ttl">Caballeros</p>
+  <div class="dc-outfits">
+    <!-- Traje caballero -->
+    <div class="dc-outfit">
+      <svg viewBox="0 0 80 180" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M40 10 L30 18 L28 22 L32 24 L28 60 L24 60 L22 170 H38 L40 130 L42 170 H58 L56 60 L52 60 L48 24 L52 22 L50 18 Z" fill="#3a3a3a" stroke="#2a2a2a" stroke-width="1.2"/>
+        <path d="M32 24 L40 50 L48 24" fill="#3a3a3a" stroke="#2a2a2a" stroke-width="1"/>
+        <path d="M35 22 L40 38 L45 22" fill="#1a1a1a" stroke="none"/>
+        <rect x="36" y="18" width="8" height="5" rx="1" fill="#fff" stroke="none"/>
+        <path d="M38 18 L40 23 L42 18" fill="none" stroke="#ccc" stroke-width=".8"/>
+        <path d="M33 60 L33 95" stroke="#2a2a2a" stroke-width=".6" stroke-dasharray="0" opacity=".3"/>
+        <path d="M47 60 L47 95" stroke="#2a2a2a" stroke-width=".6" opacity=".3"/>
+      </svg>
     </div>
-
-    <!-- Damas -->
-    <div class="dc-col">
-      <div class="dc-col-ico">
-        <svg viewBox="0 0 40 68" fill="none" stroke="currentColor" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round">
-          <!-- Head -->
-          <circle cx="20" cy="7" r="6"/>
-          <!-- Neck/shoulders -->
-          <path d="M16.5 13 L16.5 17 M23.5 13 L23.5 17"/>
-          <!-- Bodice -->
-          <path d="M13.5 17 Q20 14.5 26.5 17 L27.5 31 H12.5 Z"/>
-          <!-- Waist -->
-          <path d="M12.5 31 Q20 28.5 27.5 31"/>
-          <!-- Ball gown skirt -->
-          <path d="M12.5 31 L5 68 H35 L27.5 31"/>
-          <!-- Skirt flow lines -->
-          <path d="M15 40 Q12 52 10 63" stroke-opacity=".4"/>
-          <path d="M25 40 Q28 52 30 63" stroke-opacity=".4"/>
-        </svg>
-      </div>
-      <p class="dc-col-ttl">Damas</p>
+    <!-- Vestido dama -->
+    <div class="dc-outfit">
+      <svg viewBox="0 0 90 180" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M35 12 L33 8 M55 12 L57 8" stroke="#d4c5b2" stroke-width="1.2"/>
+        <path d="M35 12 Q45 8 55 12 L56 40 Q45 36 34 40 Z" fill="#e8ddd0" stroke="#d4c5b2" stroke-width="1"/>
+        <path d="M34 40 Q45 36 56 40" fill="none" stroke="#d4c5b2" stroke-width="1"/>
+        <path d="M34 40 L10 170 Q45 178 80 170 L56 40" fill="#e8ddd0" stroke="#d4c5b2" stroke-width="1"/>
+        <path d="M30 70 Q20 120 16 160" stroke="#d4c5b2" stroke-width=".7" opacity=".4"/>
+        <path d="M38 55 Q32 100 26 155" stroke="#d4c5b2" stroke-width=".6" opacity=".3"/>
+        <path d="M60 70 Q70 120 74 160" stroke="#d4c5b2" stroke-width=".7" opacity=".4"/>
+        <path d="M52 55 Q58 100 64 155" stroke="#d4c5b2" stroke-width=".6" opacity=".3"/>
+      </svg>
     </div>
   </div>
 
-  <div class="dc-note" id="dcNote">
-    <strong>Por favor evitar:</strong>
-    Blanco, beige o sus derivados (reservados para la novia) · Colores muy llamativos o estampados fuertes.
-  </div>
+  <p class="dc-type-txt">Formal / Semiformal</p>
+
+  <p class="dc-msg">¡Prepárense para una fiesta llena de colores!</p>
+  <p class="dc-msg">Mujeres, reserven el color blanco, beige o parecido exclusivamente para la novia.</p>
 </section>
 
 
@@ -1294,52 +1285,6 @@ function initGlobalParticles() {
   })();
 }
 
-/* ── ITINERARY · CAMINO EN S ──────────────────────────── */
-function buildTimelinePath() {
-  const wrap = document.getElementById('tlWrap');
-  const svg  = document.getElementById('tlSvg');
-  const path = document.getElementById('tlPath');
-  const glows = ['tlGlowOuter','tlGlowMid','tlGlowCore'].map(id => document.getElementById(id)).filter(Boolean);
-  const bg   = document.getElementById('tlPathBg');
-  if (!wrap || !svg || !path) return;
-  const rows = [...wrap.querySelectorAll('.tl-row')];
-  if (!rows.length) return;
-
-  function build() {
-    const rect = wrap.getBoundingClientRect();
-    const W = rect.width;
-    const H = wrap.offsetHeight;
-    svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
-    svg.setAttribute('width',  W);
-    svg.setAttribute('height', H);
-    const points = rows.map(row => {
-      const rRect = row.getBoundingClientRect();
-      const y = (rRect.top - rect.top) + rRect.height / 2;
-      const x = row.dataset.side === 'left' ? 29 : W - 29;
-      return { x, y };
-    });
-    let d = `M ${points[0].x} ${points[0].y}`;
-    for (let i = 1; i < points.length; i++) {
-      const p0 = points[i-1], p1 = points[i];
-      const midY = (p0.y + p1.y) / 2;
-      d += ` C ${p0.x} ${midY}, ${p1.x} ${midY}, ${p1.x} ${p1.y}`;
-    }
-    path.setAttribute('d', d);
-    glows.forEach(g => g.setAttribute('d', d));
-    if (bg) bg.setAttribute('d', d);
-    const len = path.getTotalLength();
-    path.style.strokeDasharray  = len;
-    path.style.strokeDashoffset = len;
-    glows.forEach(g => { g.style.strokeDasharray = len; g.style.strokeDashoffset = len; });
-    window.__tlData = { path, glows, len, rows };
-    if (typeof ScrollTrigger !== 'undefined') ScrollTrigger.refresh();
-  }
-
-  build();
-  let rzT;
-  window.addEventListener('resize', () => { clearTimeout(rzT); rzT = setTimeout(build, 140); }, { passive: true });
-  window.addEventListener('load', build);
-}
 
 /* ── SCROLL ANIMATIONS ───────────────────────────────── */
 function scrollAnims() {
@@ -1376,39 +1321,19 @@ function scrollAnims() {
     scrollTrigger: { trigger: '#calendar', start: 'top 85%', once: true }
   });
 
-  buildTimelinePath();
   ScrollTrigger.create({
-    trigger: '#itinerary', start: 'top 85%', end: 'bottom 40%', scrub: true,
-    onUpdate(self) {
-      const data = window.__tlData;
-      if (!data) return;
-      const { path, glows, len, rows } = data;
-      const off = len * (1 - self.progress);
-      path.style.strokeDashoffset = off;
-      glows.forEach(g => { g.style.strokeDashoffset = off; });
-      const n = Math.ceil(self.progress * rows.length);
-      rows.forEach((r, i) => r.classList.toggle('on', i < n));
-    },
-    onLeave() {
-      const data = window.__tlData;
-      if (!data) return;
-      const { path, glows, rows } = data;
-      path.style.strokeDashoffset = 0;
-      glows.forEach(g => { g.style.strokeDashoffset = 0; });
-      rows.forEach(r => r.classList.add('on'));
+    trigger: '#itinerary', start: 'top 78%', once: true,
+    onEnter() {
+      gsap.from('.it-step', { opacity: 0, y: 28, duration: .6, stagger: .12, ease });
     }
   });
 
-  gsap.from('.dc-sub', {
-    opacity: 0, y: 18, duration: .65, ease,
-    scrollTrigger: { trigger: '#dresscode', start: 'top 82%', once: true }
-  });
-  gsap.set('.pal-sw', { scale: 0 });
   ScrollTrigger.create({
-    trigger: '#dresscode', start: 'top 80%', once: true,
+    trigger: '#dresscode', start: 'top 78%', once: true,
     onEnter() {
-      gsap.to('.pal-sw', { scale: 1, duration: .55, stagger: .09, ease: 'back.out(2.2)' });
-      gsap.from('#dcNote', { opacity: 0, x: -18, duration: .65, delay: .45, ease });
+      gsap.from('.dc-outfits', { opacity: 0, y: 24, duration: .7, ease });
+      gsap.from('.dc-type-txt', { opacity: 0, y: 16, duration: .6, delay: .25, ease });
+      gsap.from('.dc-msg', { opacity: 0, y: 14, duration: .55, stagger: .15, delay: .4, ease });
     }
   });
 
