@@ -205,6 +205,8 @@ section{padding:64px 22px}
   background:var(--ink2);
   padding:52px 24px;
   position:relative;overflow:hidden;
+  -webkit-mask-image:linear-gradient(to bottom, transparent, black 18%, black 82%, transparent);
+  mask-image:linear-gradient(to bottom, transparent, black 18%, black 82%, transparent);
 }
 #fecha::before{
   content:'';position:absolute;pointer-events:none;
@@ -264,6 +266,8 @@ section{padding:64px 22px}
     radial-gradient(ellipse 60% 70% at 88% 78%, rgba(56,87,26,.28) 0%, transparent 48%),
     radial-gradient(ellipse 100% 50% at 50% 100%, rgba(10,20,4,.85) 0%, transparent 50%),
     linear-gradient(170deg, #111a09 0%, #1c2712 30%, #111a08 65%, #0a1205 100%);
+  -webkit-mask-image:linear-gradient(to bottom, transparent, black 18%, black 82%, transparent);
+  mask-image:linear-gradient(to bottom, transparent, black 18%, black 82%, transparent);
 }
 #countdown::before{
   content:'';position:absolute;inset:0;pointer-events:none;
