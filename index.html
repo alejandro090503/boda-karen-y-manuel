@@ -129,7 +129,8 @@ section{padding:64px 22px}
   position:absolute;top:-20%;left:0;right:0;bottom:-20%;
   z-index:0;will-change:transform;
 }
-.h-bg img{
+.h-bg img,
+.h-bg video{
   width:100%;height:100%;object-fit:cover;object-position:center 40%;
   filter:brightness(1.12) saturate(.8) contrast(.9);
   display:block;
@@ -784,8 +785,10 @@ section.has-sec-waves{padding-top:84px;padding-bottom:86px}
 <!-- ═══════════════ 1. HERO ════════════════════════════ -->
 <section id="hero">
   <div class="h-bg" id="heroBg">
-    <img src="https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/b697b668-0fa2-4ef9-8f55-3ddb7e29fb0a/1778390975158-4.jpeg"
-         alt="Karen y Manuel" loading="eager" id="heroPic">
+    <video autoplay muted loop playsinline id="heroPic"
+           poster="https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/b697b668-0fa2-4ef9-8f55-3ddb7e29fb0a/1778390975158-4.jpeg">
+      <source src="hero.mp4" type="video/mp4">
+    </video>
   </div>
   <div class="h-ov"></div>
   <div class="h-frame"></div>
