@@ -645,6 +645,31 @@ section{padding:64px 22px}
   font-size:14px;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;
   color:var(--peach);opacity:.6;margin-top:14px;display:block;padding:0 28px;text-align:center;
 }
+/* ── LIGHTBOX ─────────────────────────────────────────── */
+#galLightbox{
+  position:fixed;inset:0;z-index:9500;
+  display:flex;align-items:center;justify-content:center;
+  background:rgba(0,0,0,0);pointer-events:none;
+  transition:background .35s ease;
+}
+#galLightbox.open{background:rgba(0,0,0,.84);pointer-events:all;}
+#galLightboxImg{
+  max-width:88vw;max-height:80vh;border-radius:6px;
+  box-shadow:0 28px 90px rgba(0,0,0,.55);
+  object-fit:contain;display:block;
+  transform:scale(.65);opacity:0;
+  transition:transform .38s cubic-bezier(.34,1.56,.64,1),opacity .3s ease;
+}
+#galLightbox.open #galLightboxImg{transform:scale(1);opacity:1;}
+#galLbClose{
+  position:absolute;top:22px;right:22px;
+  width:38px;height:38px;border-radius:50%;
+  background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);
+  color:#fff;font-size:20px;line-height:1;
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;transition:background .2s;
+}
+#galLbClose:hover{background:rgba(255,255,255,.22);}
 
 /* ── RSVP ─────────────────────────────────────────────── */
 #rsvp{background:var(--ink)}
@@ -784,6 +809,12 @@ section.has-sec-waves{padding-top:84px;padding-bottom:86px}
 <div id="prog"></div>
 
 <!-- AUDIO -->
+<!-- lightbox galería -->
+<div id="galLightbox" role="dialog" aria-modal="true" aria-label="Foto ampliada">
+  <button id="galLbClose" aria-label="Cerrar">&#x2715;</button>
+  <img id="galLightboxImg" src="" alt="Foto Karen y Manuel">
+</div>
+
 <audio id="bgMusic" loop preload="none">
   <source src="cancion.mp3" type="audio/mpeg">
 </audio>
@@ -1140,7 +1171,7 @@ section.has-sec-waves{padding-top:84px;padding-bottom:86px}
     </div>
   </div>
 
-  <span class="drop-hint" id="dropHint">Toca cada foto para enfocarla</span>
+  <span class="drop-hint" id="dropHint">Toca cada foto para expandirla</span>
 </section>
 
 
@@ -1634,6 +1665,13 @@ function scrollAnims() {
       path.style.strokeDashoffset = len * (1 - self.progress);
       const n = Math.ceil(self.progress * rows.length);
       rows.forEach((r, i) => r.classList.toggle('on', i < n));
+    },
+    onLeave() {
+      const data = window.__tlData;
+      if (!data) return;
+      const { path, rows } = data;
+      path.style.strokeDashoffset = 0;
+      rows.forEach(r => r.classList.add('on'));
     }
   });
 
@@ -1955,18 +1993,18 @@ function initGallery() {
     }
   });
 
-  // tap to focus
-  photos.forEach((p, i) => {
+  // tap to expand — lightbox
+  const lb    = document.getElementById('galLightbox');
+  const lbImg = document.getElementById('galLightboxImg');
+  function closeLb() { lb.classList.remove('open'); }
+  lb.addEventListener('click', e => { if (e.target !== lbImg) closeLb(); });
+  document.getElementById('galLbClose').addEventListener('click', closeLb);
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLb(); });
+
+  photos.forEach(p => {
     p.el.addEventListener('click', () => {
-      const isFocused = p.el.classList.contains('focused');
-      photos.forEach(q => {
-        q.el.classList.remove('focused');
-        gsap.to(q.el, { scale: 1, zIndex: q.i + 1, duration: .4, ease: 'back.out(1.4)' });
-      });
-      if (!isFocused) {
-        p.el.classList.add('focused');
-        gsap.to(p.el, { scale: 1.15, zIndex: 20, duration: .4, ease: 'back.out(1.4)' });
-      }
+      lbImg.src = p.el.querySelector('img').src;
+      lb.classList.add('open');
     });
   });
 }
