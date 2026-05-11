@@ -1674,25 +1674,21 @@ function scrollAnims() {
 
   buildTimelinePath();
   ScrollTrigger.create({
-    trigger: '#itinerary', start: 'top 68%', once: true,
-    onEnter() {
+    trigger: '#itinerary', start: 'top 85%', end: 'bottom 40%', scrub: true,
+    onUpdate(self) {
       const data = window.__tlData;
       if (!data) return;
       const { path, len, rows } = data;
-      const obj = { v: len };
-      gsap.to(obj, {
-        v: 0, duration: 3.6, ease: 'power1.inOut',
-        onUpdate() {
-          path.style.strokeDashoffset = obj.v;
-          const progress = (len - obj.v) / len;
-          const n = Math.ceil(progress * rows.length);
-          rows.forEach((r, i) => r.classList.toggle('on', i < n));
-        },
-        onComplete() {
-          path.style.strokeDashoffset = 0;
-          rows.forEach(r => r.classList.add('on'));
-        }
-      });
+      path.style.strokeDashoffset = len * (1 - self.progress);
+      const n = Math.ceil(self.progress * rows.length);
+      rows.forEach((r, i) => r.classList.toggle('on', i < n));
+    },
+    onLeave() {
+      const data = window.__tlData;
+      if (!data) return;
+      const { path, rows } = data;
+      path.style.strokeDashoffset = 0;
+      rows.forEach(r => r.classList.add('on'));
     }
   });
 
