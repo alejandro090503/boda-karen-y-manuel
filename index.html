@@ -420,6 +420,29 @@ section{padding:64px 22px}
   position:relative;z-index:2;
 }
 .it-circle svg{width:28px;height:28px;}
+.it-left::after{
+  content:'';position:absolute;right:-8px;top:50%;
+  width:28px;height:1px;background:rgba(255,255,255,.35);
+  transform:translateY(-50%);
+}
+.it-left::before{
+  content:'';position:absolute;right:-10px;top:50%;
+  width:5px;height:5px;border-radius:50%;
+  background:rgba(255,255,255,.45);
+  transform:translate(0,-50%);z-index:1;
+}
+.it-right::before{
+  content:'';position:absolute;left:-8px;top:50%;
+  width:28px;height:1px;background:rgba(255,255,255,.35);
+  transform:translateY(-50%);
+}
+.it-right::after{
+  content:'';position:absolute;left:-10px;top:50%;
+  width:5px;height:5px;border-radius:50%;
+  background:rgba(255,255,255,.45);
+  transform:translate(0,-50%);z-index:1;
+}
+.it-left,.it-right{position:relative;}
 .it-label{
   font-family:'Cormorant Garamond',serif;font-style:italic;
   font-size:17px;font-weight:500;color:#fff;line-height:1.3;
@@ -808,7 +831,7 @@ section.has-sec-waves{padding-top:84px;padding-bottom:86px}
     </div>
     <p class="loc-title">Ceremonia</p>
     <div class="loc-photo" id="loc-photo-1">
-      <span class="loc-ph-txt">Foto próximamente</span>
+      <img src="iglesia.jpeg" alt="Capilla del Calvario, Metepec" loading="lazy">
     </div>
     <p class="loc-time">2:00 pm</p>
     <p class="loc-venue">Capilla del Calvario<br>Metepec, Edo. Méx.</p>
@@ -832,7 +855,7 @@ section.has-sec-waves{padding-top:84px;padding-bottom:86px}
     </div>
     <p class="loc-title">Recepción</p>
     <div class="loc-photo" id="loc-photo-2">
-      <span class="loc-ph-txt">Foto próximamente</span>
+      <img src="salon.jpeg" alt="Rancho La Era, Metepec" loading="lazy">
     </div>
     <div class="loc-dual-times">
       <div class="loc-dual-item">
