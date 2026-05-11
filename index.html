@@ -9,6 +9,14 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,700;1,6..96,400&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Great+Vibes&family=Lato:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
+/* ── LE MAJOR FONT ───────────────────────────────────── */
+@font-face{
+  font-family:'Le Major';
+  src:url('LeMajor.ttf') format('truetype');
+  font-weight:400;font-style:normal;
+  font-display:swap;
+}
+
 /* ── TOKENS ───────────────────────────────────────────── */
 :root {
   --peach:        #6f760a;
@@ -166,17 +174,17 @@ section{padding:64px 22px}
   text-shadow:0 2px 40px rgba(0,0,0,.35);
 }
 .mono-k,.mono-m{
-  font-family:'Bodoni Moda',serif;
+  font-family:'Le Major','Bodoni Moda',serif;
   color:rgba(255,255,255,.93);
   display:inline-block;vertical-align:top;
 }
 .mono-k{
-  font-size:148px;font-weight:400;font-style:italic;
+  font-size:160px;font-weight:400;font-style:italic;
   position:relative;z-index:2;
 }
 .mono-m{
-  font-size:148px;font-weight:400;font-style:normal;
-  margin-left:-28px;position:relative;z-index:1;
+  font-size:160px;font-weight:400;font-style:normal;
+  margin-left:-30px;position:relative;z-index:1;
 }
 .h-scroll{
   position:absolute;bottom:28px;left:50%;transform:translateX(-50%);
