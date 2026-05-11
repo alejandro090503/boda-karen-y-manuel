@@ -322,128 +322,68 @@ section{padding:64px 22px}
 }
 
 /* ── LOCATION ─────────────────────────────────────────── */
-#location{background:var(--ink);position:relative;overflow:hidden;}
-#location::before{
-  content:'';position:absolute;pointer-events:none;
-  top:8%;left:-40%;width:180%;height:84%;z-index:0;
-  background:
-    radial-gradient(circle at 22% 30%, rgba(111,118,10,.045) 0%, transparent 42%),
-    radial-gradient(circle at 78% 72%, rgba(111,118,10,.035) 0%, transparent 42%);
+#location{background:var(--ink2);position:relative;overflow:hidden;padding:64px 22px;}
+.loc-block{text-align:center;margin-bottom:56px;}
+.loc-block:last-child{margin-bottom:0}
+.loc-icon{margin:0 auto 6px;}
+.loc-icon svg{width:56px;height:56px;}
+.loc-title{
+  font-family:'Great Vibes',cursive;
+  font-size:clamp(36px,9vw,44px);
+  color:var(--cream);margin-bottom:22px;line-height:1.2;
 }
-#location > *{position:relative;z-index:1}
-.loc-card{
-  background:linear-gradient(180deg, rgba(245,248,235,.55) 0%, rgba(237,240,224,.35) 100%);
-  backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
-  border:1px solid rgba(111,118,10,.22);border-radius:18px;
-  padding:48px 24px 34px;margin-top:34px;
-  position:relative;overflow:hidden;text-align:center;
-  box-shadow:0 1px 2px rgba(56,87,26,.04),0 14px 42px -10px rgba(111,118,10,.09);
-  transition:transform .45s cubic-bezier(.34,1.56,.64,1),box-shadow .45s ease,border-color .35s;
-}
-.loc-card:hover{
-  transform:translateY(-5px) scale(1.012);
-  box-shadow:0 18px 50px rgba(0,0,0,.15),0 0 0 1px rgba(111,118,10,.24);
-  border-color:rgba(111,118,10,.36);
-}
-.loc-card::before{
-  content:'';position:absolute;top:0;left:12%;right:12%;height:1px;
-  background:linear-gradient(to right,transparent,var(--peach),transparent);opacity:.55;
-}
-.loc-card::after{
-  content:'';position:absolute;bottom:0;left:12%;right:12%;height:1px;
-  background:linear-gradient(to right,transparent,var(--peach),transparent);opacity:.4;
-}
-.loc-wave{position:absolute;left:0;right:0;height:28px;pointer-events:none;overflow:hidden;}
-.loc-wave-top{top:0}
-.loc-wave-bot{bottom:0;transform:scaleY(-1)}
-.loc-wave svg{width:200%;height:100%;display:block;animation:locWaveSlide 22s linear infinite;will-change:transform;}
-.loc-wave-bot svg{animation-duration:28s;animation-direction:reverse}
-@keyframes locWaveSlide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-.loc-type{
-  font-family:'Cormorant Garamond',serif;font-weight:600;
-  font-size:13px;letter-spacing:4px;text-transform:uppercase;
-  color:var(--peach);margin-bottom:14px;display:inline-block;
-}
-.loc-name{
-  font-family:'Cormorant Garamond',serif;
-  font-size:22px;font-weight:500;
-  color:var(--cream);line-height:1.32;margin-bottom:24px;letter-spacing:.3px;
-}
-.loc-time-display{
-  margin:0 auto 24px;
-  font-family:'Cormorant Garamond',serif;
-  font-size:46px;font-weight:400;
-  color:var(--cream);line-height:1;letter-spacing:-.5px;
-}
-.loc-time-display em{
-  font-size:12px;letter-spacing:5px;color:var(--peach);
-  font-style:normal;vertical-align:super;margin-left:4px;font-weight:600;
-}
-.loc-tentativa{
-  font-size:11px;letter-spacing:2px;text-transform:uppercase;
-  color:var(--peach);opacity:.65;font-weight:600;margin-bottom:16px;display:block;
-}
-.loc-map-btn{max-width:280px;margin:0 auto;display:flex}
-.loc-map-wrap{
-  width:calc(100% - 44px);margin:0 auto 22px;border-radius:12px;
-  overflow:hidden;border:1px solid rgba(111,118,10,.2);
-  box-shadow:0 6px 24px rgba(56,87,26,.1);
-}
-.loc-map-wrap iframe{display:block;width:100%;height:180px;border:0}
-.loc-dual{
+.loc-photo{
+  width:210px;height:210px;border-radius:50%;
+  margin:0 auto 22px;overflow:hidden;
+  background:rgba(111,118,10,.06);
+  border:2px solid rgba(111,118,10,.14);
   display:flex;align-items:center;justify-content:center;
-  gap:0;margin:0 auto 28px;max-width:340px;
+  box-shadow:0 10px 36px rgba(56,87,26,.1);
 }
-.loc-dual-ev{display:flex;flex-direction:column;align-items:center;gap:6px;flex:0 0 auto;}
-.loc-dual-type{
-  font-family:'Cormorant Garamond',serif;font-weight:600;
-  font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--peach);
+.loc-photo img{width:100%;height:100%;object-fit:cover;display:block;}
+.loc-ph-txt{
+  font-family:'Lato',sans-serif;font-size:9px;
+  letter-spacing:2px;text-transform:uppercase;
+  color:rgba(56,87,26,.3);
 }
-.loc-dual-time{
+.loc-time{
   font-family:'Cormorant Garamond',serif;
-  font-size:36px;font-weight:400;color:var(--cream);line-height:1;letter-spacing:-.5px;
+  font-size:18px;font-weight:400;font-style:italic;
+  color:var(--cream);margin-bottom:6px;opacity:.65;
 }
-.loc-dual-time em{font-size:10px;letter-spacing:4px;color:var(--peach);font-style:normal;vertical-align:super;margin-left:3px;font-weight:600;}
-.loc-dual-sep{flex:1;padding:0 10px;display:flex;align-items:center;margin-top:18px;}
-.loc-dual-sep svg{width:100%;height:auto;}
-
-/* ── MEDALLÓN circular ─────────────────────────────────── */
-.loc-medallion{position:relative;width:148px;height:148px;margin:0 auto 28px;}
-.loc-medallion::before{
-  content:'';position:absolute;inset:-22px;border-radius:50%;
-  border:1px dashed rgba(111,118,10,.28);
-  animation:locRingRotate 42s linear infinite;pointer-events:none;
+.loc-venue{
+  font-family:'Cormorant Garamond',serif;
+  font-size:20px;font-weight:500;
+  color:var(--cream);line-height:1.35;margin-bottom:20px;
 }
-.loc-medallion::after{
-  content:'';position:absolute;inset:-9px;border-radius:50%;
-  border:1px solid rgba(111,118,10,.18);
-  animation:locRingBreathe 5.5s ease-in-out infinite;pointer-events:none;
+.loc-btn{
+  display:inline-block;padding:11px 30px;border-radius:30px;
+  background:rgba(111,118,10,.12);color:var(--cream);
+  font-family:'Lato',sans-serif;font-size:11px;
+  letter-spacing:2.5px;text-transform:uppercase;font-weight:600;
+  text-decoration:none;border:1px solid rgba(111,118,10,.25);
+  transition:background .3s,border-color .3s;
 }
-@keyframes locRingRotate{to{transform:rotate(360deg)}}
-@keyframes locRingBreathe{
-  0%,100%{transform:scale(1);opacity:.5;border-color:rgba(111,118,10,.16)}
-  50%   {transform:scale(1.035);opacity:.95;border-color:rgba(111,118,10,.32)}
+.loc-btn:hover{background:rgba(111,118,10,.22);border-color:rgba(111,118,10,.45);}
+.loc-dual-times{
+  display:flex;align-items:center;justify-content:center;
+  gap:16px;margin-bottom:6px;
 }
-.loc-med-svg{position:absolute;inset:0;width:100%;height:100%;transform:rotate(-90deg);overflow:visible;}
-.loc-med-track{fill:none;stroke:rgba(111,118,10,.24);stroke-width:1;}
-.loc-med-arc{
-  fill:none;stroke:var(--peach);stroke-width:1.6;stroke-linecap:round;
-  stroke-dasharray:345.58;stroke-dashoffset:345.58;
-  filter:drop-shadow(0 0 3px rgba(111,118,10,.3));
-  transition:stroke-dashoffset 2.6s var(--smooth);
+.loc-dual-item{text-align:center;}
+.loc-dual-label{
+  font-family:'Lato',sans-serif;font-size:9px;
+  letter-spacing:3px;text-transform:uppercase;
+  color:var(--peach);font-weight:600;display:block;margin-bottom:2px;
 }
-.loc-card.on .loc-med-arc{stroke-dashoffset:78}
-.loc-rotor{position:absolute;inset:0;animation:locRotorSpin 15s linear infinite;pointer-events:none;will-change:transform;}
-.loc-rotor-rev{animation-duration:19s;animation-direction:reverse}
-.loc-dot{
-  position:absolute;top:-5px;left:50%;width:10px;height:10px;border-radius:50%;
-  background:var(--peach);transform:translateX(-50%);
-  box-shadow:0 0 0 3px rgba(255,255,255,.95),0 0 10px rgba(111,118,10,.55),0 0 22px rgba(111,118,10,.3);
+.loc-dual-hr{
+  font-family:'Cormorant Garamond',serif;
+  font-size:18px;font-weight:400;font-style:italic;
+  color:var(--cream);opacity:.65;
 }
-@keyframes locRotorSpin{to{transform:rotate(360deg)}}
-.loc-med-ctr{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;}
-.loc-med-time{font-family:'Cormorant Garamond',serif;font-size:38px;font-weight:400;color:var(--cream);line-height:1;letter-spacing:-.5px;}
-.loc-med-ampm{font-size:9px;letter-spacing:5px;color:var(--peach);font-weight:600;margin-top:4px;}
+.loc-dual-dot{
+  width:4px;height:4px;border-radius:50%;
+  background:var(--peach);opacity:.4;flex-shrink:0;margin-top:10px;
+}
 
 /* ── CALENDAR ─────────────────────────────────────────── */
 #calendar{
@@ -736,11 +676,9 @@ section.has-sec-waves{padding-top:84px;padding-bottom:86px}
 /* ── REDUCED MOTION ───────────────────────────────────── */
 @media(prefers-reduced-motion:reduce){
   .lbl,.ft-nms,.wind-orn,.h-frame,.gline::after,
-  .loc-card,.cd-box,.fam-card,.sobre-card,.pal-sw,.music-btn,
-  .loc-wave svg,.loc-medallion::before,.loc-medallion::after,.loc-rotor,.loc-med-arc{
+  .loc-block,.cd-box,.fam-card,.sobre-card,.pal-sw,.music-btn{
     animation:none!important;transition:none!important;
   }
-  .loc-card .loc-med-arc{stroke-dashoffset:78}
   .tl-orn,.tl-pulse{animation:none!important}
   .tl-row-inner > *{transition:none!important}
 }
@@ -869,95 +807,65 @@ section.has-sec-waves{padding-top:84px;padding-bottom:86px}
 
 <!-- ═══════════════ 3. UBICACIONES ═══════════════════ -->
 <section id="location">
-  <span class="lbl">¿Dónde y cuándo?</span>
-  <h2 class="ttl">La Celebración</h2>
-  <div class="gline"></div>
 
   <!-- Ceremonia Religiosa -->
-  <div class="loc-card">
-    <div class="loc-wave loc-wave-top" aria-hidden="true">
-      <svg viewBox="0 0 1600 28" preserveAspectRatio="none">
-        <path d="M0,14 Q100,4 200,14 T400,14 T600,14 T800,14 T1000,14 T1200,14 T1400,14 T1600,14" fill="none" stroke="rgba(111,118,10,.42)" stroke-width="1"/>
+  <div class="loc-block">
+    <div class="loc-icon" aria-hidden="true">
+      <svg viewBox="0 0 64 64" fill="none" stroke="var(--cream)" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M32 6l-1 4M32 6l1 4"/>
+        <path d="M32 10v4"/>
+        <line x1="29" y1="12" x2="35" y2="12"/>
+        <path d="M22 28h20l-2-10H24l-2 10z"/>
+        <rect x="18" y="28" width="28" height="24" rx="1"/>
+        <path d="M18 52h28"/>
+        <rect x="28" y="38" width="8" height="14" rx="1"/>
+        <circle cx="32" cy="33" r="3"/>
+        <path d="M28 22l4-4 4 4"/>
       </svg>
     </div>
-
-    <span class="loc-type">Ceremonia Religiosa</span>
-    <h3 class="loc-name">Capilla del Calvario</h3>
-
-    <div class="loc-medallion">
-      <svg class="loc-med-svg" viewBox="0 0 120 120">
-        <circle class="loc-med-track" cx="60" cy="60" r="55"/>
-        <circle class="loc-med-arc"   cx="60" cy="60" r="55"/>
-      </svg>
-      <div class="loc-rotor"><span class="loc-dot"></span></div>
-      <div class="loc-rotor loc-rotor-rev" style="inset:14px;border:1px dashed rgba(111,118,10,.18);border-radius:50%;position:absolute;animation:locRotorSpin 19s linear infinite reverse;"><span class="loc-dot" style="width:7px;height:7px;top:-3.5px;box-shadow:0 0 0 2px rgba(255,255,255,.9),0 0 8px rgba(111,118,10,.4);"></span></div>
-      <div class="loc-med-ctr">
-        <span class="loc-med-time">2:00</span>
-        <span class="loc-med-ampm">PM</span>
-      </div>
+    <p class="loc-title">Ceremonia</p>
+    <div class="loc-photo" id="loc-photo-1">
+      <span class="loc-ph-txt">Foto próximamente</span>
     </div>
-
-    <div class="loc-map-wrap">
-      <iframe
-        src="https://maps.google.com/maps?q=Capilla+del+Calvario+Calle+Miguel+Hidalgo+116+Espiritu+Santo+52140+Metepec+Mexico&output=embed&hl=es&z=17"
-        loading="lazy" allowfullscreen title="Capilla del Calvario · Metepec"></iframe>
-    </div>
-    <a href="https://maps.app.goo.gl/ykUN9jiCfGK5mMsB9" target="_blank" rel="noopener" class="btn loc-map-btn">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-      Abrir en Google Maps
-    </a>
-
-    <div class="loc-wave loc-wave-bot" aria-hidden="true">
-      <svg viewBox="0 0 1600 28" preserveAspectRatio="none">
-        <path d="M0,14 Q100,24 200,14 T400,14 T600,14 T800,14 T1000,14 T1200,14 T1400,14 T1600,14" fill="none" stroke="rgba(111,118,10,.42)" stroke-width="1"/>
-      </svg>
-    </div>
+    <p class="loc-time">2:00 pm</p>
+    <p class="loc-venue">Capilla del Calvario<br>Metepec, Edo. Méx.</p>
+    <a href="https://maps.app.goo.gl/ykUN9jiCfGK5mMsB9" target="_blank" rel="noopener" class="loc-btn">Ver Ubicación</a>
   </div>
 
-  <!-- Civil + Recepción -->
-  <div class="loc-card">
-    <div class="loc-wave loc-wave-top" aria-hidden="true">
-      <svg viewBox="0 0 1600 28" preserveAspectRatio="none">
-        <path d="M0,14 Q100,4 200,14 T400,14 T600,14 T800,14 T1000,14 T1200,14 T1400,14 T1600,14" fill="none" stroke="rgba(111,118,10,.42)" stroke-width="1"/>
+  <!-- Civil & Recepción -->
+  <div class="loc-block">
+    <div class="loc-icon" aria-hidden="true">
+      <svg viewBox="0 0 64 64" fill="none" stroke="var(--cream)" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M20 38c0-12 6-18 10-24"/>
+        <path d="M44 38c0-12-6-18-10-24"/>
+        <ellipse cx="20" cy="40" rx="6" ry="3"/>
+        <ellipse cx="44" cy="40" rx="6" ry="3"/>
+        <line x1="20" y1="43" x2="20" y2="54"/>
+        <line x1="44" y1="43" x2="44" y2="54"/>
+        <ellipse cx="20" cy="55" rx="7" ry="2"/>
+        <ellipse cx="44" cy="55" rx="7" ry="2"/>
+        <path d="M32 10l-1-4M32 10l1-4M30 7h4"/>
       </svg>
     </div>
-
-    <span class="loc-type">Ceremonia Civil &amp; Recepción</span>
-
-    <div class="loc-dual">
-      <div class="loc-dual-ev">
-        <span class="loc-dual-type">Civil</span>
-        <span class="loc-dual-time">4:00 <em>pm</em></span>
+    <p class="loc-title">Recepción</p>
+    <div class="loc-photo" id="loc-photo-2">
+      <span class="loc-ph-txt">Foto próximamente</span>
+    </div>
+    <div class="loc-dual-times">
+      <div class="loc-dual-item">
+        <span class="loc-dual-label">Civil</span>
+        <span class="loc-dual-hr">4:00 pm</span>
       </div>
-      <div class="loc-dual-sep">
-        <svg viewBox="0 0 80 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <line x1="0" y1="16" x2="30" y2="16" stroke="rgba(111,118,10,.3)" stroke-width="0.8"/>
-          <circle cx="40" cy="16" r="4" fill="var(--peach)" opacity="0.5"/>
-          <line x1="50" y1="16" x2="80" y2="16" stroke="rgba(111,118,10,.3)" stroke-width="0.8"/>
-        </svg>
-      </div>
-      <div class="loc-dual-ev">
-        <span class="loc-dual-type">Recepción</span>
-        <span class="loc-dual-time">4:30 <em>pm</em></span>
+      <span class="loc-dual-dot" aria-hidden="true"></span>
+      <div class="loc-dual-item">
+        <span class="loc-dual-label">Recepción</span>
+        <span class="loc-dual-hr">4:30 pm</span>
       </div>
     </div>
-
-    <div class="loc-map-wrap">
-      <iframe
-        src="https://maps.google.com/maps?q=19.219923,-99.66189&output=embed&hl=es&z=17"
-        loading="lazy" allowfullscreen title="Rancho La Era · Metepec"></iframe>
-    </div>
-    <a href="https://maps.app.goo.gl/T7tJiJMqXmKrePp4A" target="_blank" rel="noopener" class="btn loc-map-btn">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-      Abrir en Google Maps
-    </a>
-
-    <div class="loc-wave loc-wave-bot" aria-hidden="true">
-      <svg viewBox="0 0 1600 28" preserveAspectRatio="none">
-        <path d="M0,14 Q100,24 200,14 T400,14 T600,14 T800,14 T1000,14 T1200,14 T1400,14 T1600,14" fill="none" stroke="rgba(111,118,10,.42)" stroke-width="1"/>
-      </svg>
-    </div>
+    <p class="loc-venue">Rancho La Era<br>Metepec, Edo. Méx.</p>
+    <a href="https://maps.app.goo.gl/T7tJiJMqXmKrePp4A" target="_blank" rel="noopener" class="loc-btn">Ver Ubicación</a>
   </div>
+
 </section>
 
 
@@ -1455,10 +1363,7 @@ function scrollAnims() {
   ScrollTrigger.create({
     trigger: '#location', start: 'top 78%', once: true,
     onEnter() {
-      gsap.from('.loc-card', { opacity: 0, y: 36, duration: .75, stagger: .14, ease });
-      document.querySelectorAll('.loc-card').forEach((c, i) => {
-        setTimeout(() => c.classList.add('on'), 420 + i * 220);
-      });
+      gsap.from('.loc-block', { opacity: 0, y: 36, duration: .75, stagger: .18, ease });
     }
   });
 
