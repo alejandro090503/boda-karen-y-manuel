@@ -512,7 +512,9 @@ section{padding:64px 22px}
 .timeline{margin-top:44px;position:relative;padding:18px 0 6px;min-height:400px;}
 .tl-svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;overflow:visible;}
 .tl-svg-bg{stroke:rgba(111,118,10,.18);stroke-width:1;fill:none;stroke-dasharray:2 5;}
-.tl-svg-glow{stroke:rgba(120,180,20,.35);stroke-width:10;stroke-linecap:round;fill:none;}
+.tl-svg-glow-outer{stroke:rgba(111,118,10,.05);stroke-width:22;stroke-linecap:round;fill:none;}
+.tl-svg-glow-mid{stroke:rgba(111,118,10,.12);stroke-width:12;stroke-linecap:round;fill:none;}
+.tl-svg-glow-core{stroke:rgba(111,118,10,.25);stroke-width:5;stroke-linecap:round;fill:none;}
 .tl-svg-path{stroke:var(--peach);stroke-width:2;stroke-linecap:round;fill:none;}
 .tl-row{position:relative;z-index:1;min-height:158px;display:flex;align-items:center;margin-bottom:14px;}
 .tl-row[data-side="left"]{padding-left:58px;padding-right:44%;justify-content:flex-start;text-align:left;}
@@ -536,7 +538,7 @@ section{padding:64px 22px}
 .tl-dot{position:absolute;top:50%;width:14px;height:14px;margin-top:-7px;border-radius:50%;background:var(--ink);border:1.5px solid var(--peach);transform:scale(0);transition:transform .55s var(--spring), box-shadow .55s, background .55s;z-index:2;}
 .tl-row[data-side="left"]  .tl-dot{left:22px}
 .tl-row[data-side="right"] .tl-dot{right:22px}
-.tl-row.on .tl-dot{transform:scale(1);background:var(--peach);box-shadow:0 0 0 3px rgba(255,255,255,.9),0 0 14px rgba(165,232,50,.9),0 0 30px rgba(145,215,40,.55);}
+.tl-row.on .tl-dot{transform:scale(1);background:var(--peach);box-shadow:0 0 0 3px rgba(255,255,255,.85),0 0 8px rgba(111,118,10,.45),0 0 22px rgba(111,118,10,.15);}
 .tl-orn{position:absolute;top:50%;width:40px;height:40px;margin-top:-20px;border-radius:50%;border:1px dashed rgba(111,118,10,.25);opacity:0;animation:tlOrnRotate 22s linear infinite;transition:opacity .9s ease;pointer-events:none;z-index:1;}
 .tl-row[data-side="left"]  .tl-orn{left:9px}
 .tl-row[data-side="right"] .tl-orn{right:9px}
@@ -1088,9 +1090,11 @@ section.has-sec-waves{padding-top:84px;padding-bottom:86px}
   <div class="gline"></div>
   <div class="timeline" id="tlWrap">
     <svg class="tl-svg" id="tlSvg" preserveAspectRatio="none" aria-hidden="true">
-      <path class="tl-svg-bg"   id="tlPathBg"/>
-      <path class="tl-svg-glow" id="tlPathGlow"/>
-      <path class="tl-svg-path" id="tlPath"/>
+      <path class="tl-svg-bg"         id="tlPathBg"/>
+      <path class="tl-svg-glow-outer" id="tlGlowOuter"/>
+      <path class="tl-svg-glow-mid"   id="tlGlowMid"/>
+      <path class="tl-svg-glow-core"  id="tlGlowCore"/>
+      <path class="tl-svg-path"       id="tlPath"/>
     </svg>
 
     <div class="tl-row" data-side="left">
@@ -1582,7 +1586,7 @@ function buildTimelinePath() {
   const wrap = document.getElementById('tlWrap');
   const svg  = document.getElementById('tlSvg');
   const path = document.getElementById('tlPath');
-  const glow = document.getElementById('tlPathGlow');
+  const glows = ['tlGlowOuter','tlGlowMid','tlGlowCore'].map(id => document.getElementById(id)).filter(Boolean);
   const bg   = document.getElementById('tlPathBg');
   if (!wrap || !svg || !path) return;
   const rows = [...wrap.querySelectorAll('.tl-row')];
@@ -1608,13 +1612,13 @@ function buildTimelinePath() {
       d += ` C ${p0.x} ${midY}, ${p1.x} ${midY}, ${p1.x} ${p1.y}`;
     }
     path.setAttribute('d', d);
-    if (glow) glow.setAttribute('d', d);
+    glows.forEach(g => g.setAttribute('d', d));
     if (bg) bg.setAttribute('d', d);
     const len = path.getTotalLength();
     path.style.strokeDasharray  = len;
     path.style.strokeDashoffset = len;
-    if (glow) { glow.style.strokeDasharray = len; glow.style.strokeDashoffset = len; }
-    window.__tlData = { path, glow, len, rows };
+    glows.forEach(g => { g.style.strokeDasharray = len; g.style.strokeDashoffset = len; });
+    window.__tlData = { path, glows, len, rows };
     if (typeof ScrollTrigger !== 'undefined') ScrollTrigger.refresh();
   }
 
@@ -1668,19 +1672,19 @@ function scrollAnims() {
     onUpdate(self) {
       const data = window.__tlData;
       if (!data) return;
-      const { path, glow, len, rows } = data;
+      const { path, glows, len, rows } = data;
       const off = len * (1 - self.progress);
       path.style.strokeDashoffset = off;
-      if (glow) glow.style.strokeDashoffset = off;
+      glows.forEach(g => { g.style.strokeDashoffset = off; });
       const n = Math.ceil(self.progress * rows.length);
       rows.forEach((r, i) => r.classList.toggle('on', i < n));
     },
     onLeave() {
       const data = window.__tlData;
       if (!data) return;
-      const { path, glow, rows } = data;
+      const { path, glows, rows } = data;
       path.style.strokeDashoffset = 0;
-      if (glow) glow.style.strokeDashoffset = 0;
+      glows.forEach(g => { g.style.strokeDashoffset = 0; });
       rows.forEach(r => r.classList.add('on'));
     }
   });
