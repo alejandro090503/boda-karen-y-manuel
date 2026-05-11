@@ -512,7 +512,8 @@ section{padding:64px 22px}
 .timeline{margin-top:44px;position:relative;padding:18px 0 6px;min-height:400px;}
 .tl-svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;overflow:visible;}
 .tl-svg-bg{stroke:rgba(111,118,10,.18);stroke-width:1;fill:none;stroke-dasharray:2 5;}
-.tl-svg-path{stroke:var(--peach);stroke-width:2.2;stroke-linecap:round;fill:none;}
+.tl-svg-glow{stroke:rgba(120,180,20,.35);stroke-width:10;stroke-linecap:round;fill:none;}
+.tl-svg-path{stroke:var(--peach);stroke-width:2;stroke-linecap:round;fill:none;}
 .tl-row{position:relative;z-index:1;min-height:158px;display:flex;align-items:center;margin-bottom:14px;}
 .tl-row[data-side="left"]{padding-left:58px;padding-right:44%;justify-content:flex-start;text-align:left;}
 .tl-row[data-side="right"]{padding-right:58px;padding-left:44%;justify-content:flex-end;text-align:right;}
@@ -668,7 +669,9 @@ section{padding:64px 22px}
   color:#fff;font-size:20px;line-height:1;
   display:flex;align-items:center;justify-content:center;
   cursor:pointer;transition:background .2s;
+  opacity:0;pointer-events:none;
 }
+#galLightbox.open #galLbClose{opacity:1;pointer-events:all;}
 #galLbClose:hover{background:rgba(255,255,255,.22);}
 
 /* ── RSVP ─────────────────────────────────────────────── */
@@ -1085,25 +1088,9 @@ section.has-sec-waves{padding-top:84px;padding-bottom:86px}
   <div class="gline"></div>
   <div class="timeline" id="tlWrap">
     <svg class="tl-svg" id="tlSvg" preserveAspectRatio="none" aria-hidden="true">
-      <defs>
-        <filter id="tlGlowFilter" x="-40%" y="-40%" width="180%" height="180%">
-          <feGaussianBlur in="SourceGraphic" stdDeviation="5" result="blur1"/>
-          <feGaussianBlur in="SourceGraphic" stdDeviation="14" result="blur2"/>
-          <feColorMatrix in="blur1" type="matrix"
-            values="0 0.55 0.08 0 0   0 0.82 0.12 0 0   0 0.16 0.02 0 0   0 0 0 1 0"
-            result="green1"/>
-          <feColorMatrix in="blur2" type="matrix"
-            values="0 0.45 0.06 0 0   0 0.70 0.10 0 0   0 0.10 0.01 0 0   0 0 0 0.55 0"
-            result="green2"/>
-          <feMerge>
-            <feMergeNode in="green2"/>
-            <feMergeNode in="green1"/>
-            <feMergeNode in="SourceGraphic"/>
-          </feMerge>
-        </filter>
-      </defs>
       <path class="tl-svg-bg"   id="tlPathBg"/>
-      <path class="tl-svg-path" id="tlPath" filter="url(#tlGlowFilter)"/>
+      <path class="tl-svg-glow" id="tlPathGlow"/>
+      <path class="tl-svg-path" id="tlPath"/>
     </svg>
 
     <div class="tl-row" data-side="left">
@@ -1595,6 +1582,7 @@ function buildTimelinePath() {
   const wrap = document.getElementById('tlWrap');
   const svg  = document.getElementById('tlSvg');
   const path = document.getElementById('tlPath');
+  const glow = document.getElementById('tlPathGlow');
   const bg   = document.getElementById('tlPathBg');
   if (!wrap || !svg || !path) return;
   const rows = [...wrap.querySelectorAll('.tl-row')];
@@ -1620,11 +1608,13 @@ function buildTimelinePath() {
       d += ` C ${p0.x} ${midY}, ${p1.x} ${midY}, ${p1.x} ${p1.y}`;
     }
     path.setAttribute('d', d);
+    if (glow) glow.setAttribute('d', d);
     if (bg) bg.setAttribute('d', d);
     const len = path.getTotalLength();
     path.style.strokeDasharray  = len;
     path.style.strokeDashoffset = len;
-    window.__tlData = { path, len, rows };
+    if (glow) { glow.style.strokeDasharray = len; glow.style.strokeDashoffset = len; }
+    window.__tlData = { path, glow, len, rows };
     if (typeof ScrollTrigger !== 'undefined') ScrollTrigger.refresh();
   }
 
@@ -1678,16 +1668,19 @@ function scrollAnims() {
     onUpdate(self) {
       const data = window.__tlData;
       if (!data) return;
-      const { path, len, rows } = data;
-      path.style.strokeDashoffset = len * (1 - self.progress);
+      const { path, glow, len, rows } = data;
+      const off = len * (1 - self.progress);
+      path.style.strokeDashoffset = off;
+      if (glow) glow.style.strokeDashoffset = off;
       const n = Math.ceil(self.progress * rows.length);
       rows.forEach((r, i) => r.classList.toggle('on', i < n));
     },
     onLeave() {
       const data = window.__tlData;
       if (!data) return;
-      const { path, rows } = data;
+      const { path, glow, rows } = data;
       path.style.strokeDashoffset = 0;
+      if (glow) glow.style.strokeDashoffset = 0;
       rows.forEach(r => r.classList.add('on'));
     }
   });
