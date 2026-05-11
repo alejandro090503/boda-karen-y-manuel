@@ -139,9 +139,9 @@ section{padding:64px 22px}
   position:absolute;inset:0;z-index:1;
   background:
     linear-gradient(to bottom,
-      rgba(245,248,235,.28) 0%,
-      rgba(245,248,235,.14) 32%,
-      rgba(245,248,235,.52) 62%,
+      rgba(245,248,235,.35) 0%,
+      rgba(245,248,235,.42) 32%,
+      rgba(245,248,235,.62) 62%,
       rgba(245,248,235,.97) 100%);
 }
 .h-ov::after{
@@ -241,7 +241,7 @@ section{padding:64px 22px}
   will-change:transform,filter;
   transform-origin:center center;white-space:nowrap;
 }
-.h-amp-clip{overflow:hidden;line-height:1;margin:6px 0 8px}
+.h-amp-clip{overflow:visible;line-height:1.15;margin:6px 0 8px;padding:6px 0}
 .h-amp{
   font-family:'Great Vibes',cursive;font-size:62px;
   color:var(--peach);display:block;
@@ -260,14 +260,14 @@ section{padding:64px 22px}
 .h-date-wrap{margin-top:32px;position:relative}
 .h-date{
   font-family:'Cormorant Garamond',serif;
-  font-size:15px;letter-spacing:6px;text-transform:uppercase;
-  color:var(--peach);font-weight:500;
-  text-shadow:0 1px 6px rgba(255,255,255,.85);
+  font-size:18px;letter-spacing:6px;text-transform:uppercase;
+  color:var(--peach);font-weight:600;
+  text-shadow:0 1px 8px rgba(255,255,255,.95),0 2px 20px rgba(255,255,255,.6);
 }
 .h-city{
-  font-size:11px;letter-spacing:4px;text-transform:uppercase;font-weight:500;
-  color:var(--cream);opacity:.65;margin-top:10px;
-  text-shadow:0 1px 4px rgba(255,255,255,.7);
+  font-size:13px;letter-spacing:4px;text-transform:uppercase;font-weight:500;
+  color:var(--cream);opacity:.92;margin-top:10px;
+  text-shadow:0 1px 8px rgba(255,255,255,.95),0 2px 16px rgba(255,255,255,.55);
 }
 .h-scroll{
   position:absolute;bottom:28px;left:50%;transform:translateX(-50%);
@@ -368,8 +368,8 @@ section{padding:64px 22px}
 }
 .cd-ring-grid > :nth-child(1) .cd-num{font-size:86px;letter-spacing:-2px}
 .cd-ring-grid > :nth-child(2) .cd-num{font-size:68px;letter-spacing:-1.6px}
-.cd-ring-grid > :nth-child(3) .cd-num{font-size:54px;letter-spacing:-1.2px}
-.cd-ring-grid > :nth-child(4) .cd-num{font-size:44px;letter-spacing:-1px}
+.cd-ring-grid > :nth-child(3) .cd-num{font-size:44px;letter-spacing:-1px}
+.cd-ring-grid > :nth-child(4) .cd-num{font-size:34px;letter-spacing:-.8px}
 .cd-ring-lbl{letter-spacing:4px;text-transform:uppercase;color:var(--peach);opacity:.85;font-weight:600;font-size:10px;}
 .cd-ring-grid > :nth-child(1) .cd-ring-lbl{font-size:11px;margin-top:16px}
 .cd-ring-grid > :nth-child(2) .cd-ring-lbl{margin-top:13px;letter-spacing:3.5px}
@@ -1013,13 +1013,14 @@ section.has-sec-waves{padding-top:84px;padding-bottom:86px}
       </div>
     </div>
 
-    <a href="https://maps.app.goo.gl/T7tJiJMqXmKrePp4A" target="_blank" rel="noopener" class="btn" style="max-width:280px;margin:0 auto 10px;display:flex">
+    <div class="loc-map-wrap">
+      <iframe
+        src="https://maps.google.com/maps?q=19.219923,-99.66189&output=embed&hl=es&z=17"
+        loading="lazy" allowfullscreen title="Rancho La Era · Metepec"></iframe>
+    </div>
+    <a href="https://maps.app.goo.gl/T7tJiJMqXmKrePp4A" target="_blank" rel="noopener" class="btn loc-map-btn">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-      Ver Civil en Maps
-    </a>
-    <a href="https://maps.app.goo.gl/4uRE1L5ngb47tRmp6" target="_blank" rel="noopener" class="btn" style="max-width:280px;margin:0 auto;display:flex">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-      Ver Recepción en Maps
+      Abrir en Google Maps
     </a>
 
     <div class="loc-wave loc-wave-bot" aria-hidden="true">
