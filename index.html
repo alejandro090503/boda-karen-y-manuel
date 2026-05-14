@@ -262,10 +262,10 @@ section{padding:64px 22px}
   text-transform:uppercase;
 }
 .fch-full{
-  font-family:'Lato',sans-serif;
-  font-size:clamp(12px,3.2vw,15px);font-weight:500;
-  letter-spacing:clamp(3px,1vw,5px);
-  color:#4a4a4a;margin-bottom:4px;
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(13px,3.5vw,17px);font-weight:600;
+  letter-spacing:clamp(4px,1.2vw,7px);
+  color:#3a3a3a;margin-bottom:4px;
   text-transform:uppercase;
 }
 .fch-amp{
@@ -640,15 +640,33 @@ section{padding:64px 22px}
 
 /* ── FOOTER ───────────────────────────────────────────── */
 #footer{
-  background:#fff;padding:0 0 42px;text-align:center;
+  padding:0;text-align:center;
   position:relative;overflow:hidden;
 }
-.ft-botanical{
-  width:100%;height:auto;display:block;
-  pointer-events:none;
-  margin-bottom:-10px;
+.ft-bg{
+  position:absolute;inset:0;
+  width:100%;height:100%;
+  object-fit:contain;
+  object-position:center center;
+  pointer-events:none;z-index:0;
 }
-.ft-body{padding:0 28px;}
+/* Fade top and bottom edges */
+#footer::before,#footer::after{
+  content:'';position:absolute;left:0;right:0;
+  z-index:1;pointer-events:none;
+}
+#footer::before{
+  top:0;height:60px;
+  background:linear-gradient(to bottom,#fff 0%,transparent 100%);
+}
+#footer::after{
+  bottom:0;height:60px;
+  background:linear-gradient(to top,#fff 0%,transparent 100%);
+}
+.ft-body{
+  padding:130px 28px 200px;
+  position:relative;z-index:2;
+}
 .ft-msg{
   font-family:'Cormorant Garamond',serif;
   font-size:clamp(22px,6vw,30px);font-weight:400;font-style:italic;
@@ -1225,166 +1243,7 @@ section.has-sec-waves{padding-top:84px;padding-bottom:86px}
 
 <!-- ═══════════════ 12. FOOTER ═══════════════════════ -->
 <footer id="footer">
-
-  <!-- Botanical arrangement (sage/gold watercolor leaves) -->
-  <svg class="ft-botanical" viewBox="0 0 430 180" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <defs>
-      <linearGradient id="leafSage1" x1="0" y1="0" x2=".5" y2="1">
-        <stop offset="0%" stop-color="#a8b88a"/>
-        <stop offset="100%" stop-color="#7a8e60"/>
-      </linearGradient>
-      <linearGradient id="leafSage2" x1=".2" y1="0" x2=".8" y2="1">
-        <stop offset="0%" stop-color="#8a9a6b"/>
-        <stop offset="100%" stop-color="#6b7f55"/>
-      </linearGradient>
-      <linearGradient id="leafDark" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0%" stop-color="#6b7f55"/>
-        <stop offset="100%" stop-color="#4a5e3a"/>
-      </linearGradient>
-      <linearGradient id="leafGold1" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0%" stop-color="#dcc080"/>
-        <stop offset="50%" stop-color="#c9a96e"/>
-        <stop offset="100%" stop-color="#b08840"/>
-      </linearGradient>
-      <linearGradient id="leafGold2" x1=".3" y1="0" x2=".7" y2="1">
-        <stop offset="0%" stop-color="#e8d498"/>
-        <stop offset="100%" stop-color="#c9a050"/>
-      </linearGradient>
-      <linearGradient id="flowerPetal" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0%" stop-color="#f5f0e8"/>
-        <stop offset="100%" stop-color="#e8e0d0"/>
-      </linearGradient>
-    </defs>
-
-    <!-- ─── LEFT GOLD BRANCH (berries/buds) ─── -->
-    <g opacity=".85">
-      <path d="M55 -5 Q62 18 72 40 Q82 62 95 80 Q105 92 112 100" stroke="#c9a96e" stroke-width="1" fill="none"/>
-      <path d="M60 5 Q52 14 48 28" stroke="#c9a96e" stroke-width=".8" fill="none"/>
-      <path d="M68 22 Q60 30 55 42" stroke="#c9a96e" stroke-width=".7" fill="none"/>
-      <!-- Gold berries -->
-      <circle cx="48" cy="10" r="3.5" fill="url(#leafGold1)" opacity=".6"/>
-      <circle cx="42" cy="18" r="3" fill="url(#leafGold2)" opacity=".55"/>
-      <circle cx="52" cy="16" r="2.5" fill="url(#leafGold1)" opacity=".5"/>
-      <circle cx="56" cy="26" r="3" fill="url(#leafGold2)" opacity=".6"/>
-      <circle cx="48" cy="30" r="2.8" fill="url(#leafGold1)" opacity=".5"/>
-      <circle cx="62" cy="36" r="2.5" fill="url(#leafGold2)" opacity=".45"/>
-      <circle cx="55" cy="44" r="3" fill="url(#leafGold1)" opacity=".55"/>
-      <circle cx="70" cy="50" r="2.2" fill="url(#leafGold2)" opacity=".4"/>
-      <circle cx="78" cy="60" r="2.8" fill="url(#leafGold1)" opacity=".45"/>
-      <circle cx="85" cy="72" r="2.5" fill="url(#leafGold2)" opacity=".4"/>
-      <circle cx="95" cy="84" r="2" fill="url(#leafGold1)" opacity=".35"/>
-      <!-- Berry shine dots -->
-      <circle cx="47" cy="9" r=".8" fill="#f0e0b0" opacity=".5"/>
-      <circle cx="55" cy="25" r=".7" fill="#f0e0b0" opacity=".45"/>
-    </g>
-
-    <!-- ─── LEFT SAGE LEAVES (large, pointed) ─── -->
-    <g opacity=".75">
-      <path d="M95 -5 Q112 30 130 65 Q142 90 150 115 Q154 128 156 140" stroke="#7a8e60" stroke-width=".8" fill="none"/>
-      <path d="M82 -2 Q88 15 92 30" stroke="#8a9a6b" stroke-width=".6" fill="none"/>
-      <!-- Leaf shapes (pointed, natural curves) -->
-      <path d="M95 5 Q78 12 72 28 Q80 18 95 12Z" fill="url(#leafSage1)" opacity=".45"/>
-      <path d="M95 5 Q108 14 112 30 Q104 18 95 12Z" fill="url(#leafSage2)" opacity=".38"/>
-      <path d="M100 22 Q82 30 76 48 Q86 35 102 28Z" fill="url(#leafDark)" opacity=".4"/>
-      <path d="M102 26 Q118 34 124 52 Q114 38 102 32Z" fill="url(#leafSage1)" opacity=".42"/>
-      <path d="M108 42 Q90 50 82 70 Q94 55 110 48Z" fill="url(#leafSage2)" opacity=".38"/>
-      <path d="M112 48 Q128 56 136 74 Q124 60 112 54Z" fill="url(#leafSage1)" opacity=".35"/>
-      <path d="M118 62 Q100 72 92 92 Q106 76 120 68Z" fill="url(#leafDark)" opacity=".32"/>
-      <path d="M122 68 Q140 78 148 96 Q136 82 122 74Z" fill="url(#leafSage2)" opacity=".3"/>
-      <path d="M130 85 Q114 94 108 112 Q118 98 132 90Z" fill="url(#leafSage1)" opacity=".28"/>
-      <path d="M134 92 Q150 100 156 118 Q146 104 134 98Z" fill="url(#leafSage2)" opacity=".25"/>
-      <!-- Leaf veins -->
-      <path d="M85 16 Q90 12 95 8" stroke="#6b7f55" stroke-width=".3" fill="none" opacity=".3"/>
-      <path d="M92 38 Q98 32 105 28" stroke="#6b7f55" stroke-width=".3" fill="none" opacity=".25"/>
-      <path d="M100 60 Q108 52 116 48" stroke="#6b7f55" stroke-width=".3" fill="none" opacity=".22"/>
-    </g>
-
-    <!-- ─── CENTER-LEFT LARGE LEAVES ─── -->
-    <g opacity=".65">
-      <path d="M170 -5 Q185 25 200 55 Q212 80 220 105 Q225 120 228 138" stroke="#6b7f55" stroke-width="1" fill="none"/>
-      <!-- Large pointed leaves -->
-      <path d="M170 2 Q148 14 138 38 Q152 22 172 10Z" fill="url(#leafSage2)" opacity=".42"/>
-      <path d="M172 6 Q192 18 200 42 Q188 24 172 14Z" fill="url(#leafSage1)" opacity=".38"/>
-      <path d="M180 28 Q158 40 148 64 Q162 48 182 36Z" fill="url(#leafDark)" opacity=".36"/>
-      <path d="M184 34 Q204 46 214 70 Q200 52 184 42Z" fill="url(#leafSage2)" opacity=".34"/>
-      <path d="M192 55 Q170 68 162 90 Q176 74 194 62Z" fill="url(#leafSage1)" opacity=".3"/>
-      <path d="M196 62 Q216 74 226 98 Q212 80 196 70Z" fill="url(#leafDark)" opacity=".28"/>
-      <path d="M205 82 Q186 94 178 115 Q190 100 207 88Z" fill="url(#leafSage2)" opacity=".25"/>
-      <path d="M210 90 Q228 100 234 122 Q222 106 210 96Z" fill="url(#leafSage1)" opacity=".22"/>
-      <!-- Veins -->
-      <path d="M158 22 Q164 14 172 6" stroke="#4a5e3a" stroke-width=".3" fill="none" opacity=".25"/>
-      <path d="M168 50 Q176 42 186 34" stroke="#4a5e3a" stroke-width=".3" fill="none" opacity=".2"/>
-    </g>
-
-    <!-- ─── CENTER-RIGHT EUCALYPTUS ─── -->
-    <g opacity=".6">
-      <path d="M260 -5 Q272 25 282 55 Q290 80 295 100 Q298 115 300 130" stroke="#8a9a6b" stroke-width=".8" fill="none"/>
-      <!-- Round eucalyptus leaves -->
-      <path d="M260 4 Q248 12 246 26 Q254 16 262 10Z" fill="url(#leafSage1)" opacity=".35"/>
-      <path d="M262 8 Q274 16 278 30 Q270 18 264 12Z" fill="url(#leafSage2)" opacity=".3"/>
-      <path d="M268 24 Q254 34 250 50 Q260 38 270 30Z" fill="url(#leafDark)" opacity=".32"/>
-      <path d="M270 28 Q284 38 290 54 Q280 42 272 34Z" fill="url(#leafSage1)" opacity=".3"/>
-      <path d="M276 46 Q264 56 258 72 Q268 60 278 52Z" fill="url(#leafSage2)" opacity=".28"/>
-      <path d="M278 50 Q292 60 298 76 Q288 64 280 56Z" fill="url(#leafSage1)" opacity=".26"/>
-      <path d="M284 68 Q272 78 268 92 Q276 82 286 74Z" fill="url(#leafDark)" opacity=".24"/>
-      <path d="M286 72 Q298 82 302 96 Q294 86 288 78Z" fill="url(#leafSage2)" opacity=".22"/>
-      <path d="M292 90 Q282 100 278 112 Q286 102 294 95Z" fill="url(#leafSage1)" opacity=".2"/>
-    </g>
-
-    <!-- ─── RIGHT WHITE/CREAM FLOWERS ─── -->
-    <g opacity=".6">
-      <!-- Flower 1 (larger) -->
-      <path d="M320 22 Q312 14 320 8 Q328 14 320 22Z" fill="url(#flowerPetal)" opacity=".55"/>
-      <path d="M320 22 Q328 14 334 18 Q328 26 320 22Z" fill="url(#flowerPetal)" opacity=".5"/>
-      <path d="M320 22 Q326 28 322 34 Q316 28 320 22Z" fill="url(#flowerPetal)" opacity=".48"/>
-      <path d="M320 22 Q312 26 308 20 Q312 14 320 22Z" fill="url(#flowerPetal)" opacity=".5"/>
-      <path d="M320 22 Q314 16 318 10 Q324 16 320 22Z" fill="url(#flowerPetal)" opacity=".45"/>
-      <circle cx="320" cy="22" r="3" fill="#ddd5c5" opacity=".5"/>
-      <circle cx="320" cy="22" r="1.5" fill="#c9a96e" opacity=".4"/>
-      <!-- Flower 2 -->
-      <path d="M340 12 Q334 6 340 2 Q346 6 340 12Z" fill="url(#flowerPetal)" opacity=".5"/>
-      <path d="M340 12 Q346 6 350 9 Q346 16 340 12Z" fill="url(#flowerPetal)" opacity=".45"/>
-      <path d="M340 12 Q344 18 340 22 Q336 18 340 12Z" fill="url(#flowerPetal)" opacity=".42"/>
-      <path d="M340 12 Q334 16 332 10 Q334 6 340 12Z" fill="url(#flowerPetal)" opacity=".45"/>
-      <circle cx="340" cy="12" r="2.5" fill="#ddd5c5" opacity=".45"/>
-      <circle cx="340" cy="12" r="1.2" fill="#c9a96e" opacity=".35"/>
-      <!-- Flower 3 (small bud) -->
-      <path d="M310 42 Q306 36 310 32 Q314 36 310 42Z" fill="url(#flowerPetal)" opacity=".4"/>
-      <path d="M310 42 Q314 36 317 39 Q314 44 310 42Z" fill="url(#flowerPetal)" opacity=".38"/>
-      <circle cx="310" cy="40" r="2" fill="#ddd5c5" opacity=".35"/>
-      <!-- Small green sepals -->
-      <path d="M318 26 Q320 30 316 28" stroke="#8a9a6b" stroke-width=".6" fill="#8a9a6b" opacity=".3"/>
-      <path d="M338 16 Q340 20 336 18" stroke="#8a9a6b" stroke-width=".5" fill="#8a9a6b" opacity=".25"/>
-    </g>
-
-    <!-- ─── RIGHT GOLD BRANCHES ─── -->
-    <g opacity=".75">
-      <path d="M345 -5 Q355 20 365 48 Q372 68 376 85" stroke="#c9a96e" stroke-width=".9" fill="none"/>
-      <path d="M368 -5 Q374 15 378 38 Q380 50 382 62" stroke="#c9a96e" stroke-width=".7" fill="none"/>
-      <path d="M388 -5 Q390 12 392 28" stroke="#b8944e" stroke-width=".5" fill="none"/>
-      <!-- Gold leaf shapes -->
-      <path d="M348 8 Q340 14 338 24 Q344 16 350 12Z" fill="url(#leafGold1)" opacity=".45"/>
-      <path d="M350 12 Q358 18 362 28 Q356 20 350 16Z" fill="url(#leafGold2)" opacity=".4"/>
-      <path d="M356 28 Q348 34 344 44 Q350 36 358 32Z" fill="url(#leafGold1)" opacity=".38"/>
-      <path d="M358 32 Q366 38 370 48 Q364 40 358 36Z" fill="url(#leafGold2)" opacity=".35"/>
-      <path d="M364 48 Q356 54 352 64 Q358 56 366 52Z" fill="url(#leafGold1)" opacity=".3"/>
-      <path d="M370 10 Q364 16 362 24 Q366 18 372 14Z" fill="url(#leafGold2)" opacity=".38"/>
-      <path d="M374 22 Q380 28 384 38 Q378 30 374 26Z" fill="url(#leafGold1)" opacity=".32"/>
-      <path d="M390 4 Q386 10 384 18 Q388 12 392 8Z" fill="url(#leafGold2)" opacity=".3"/>
-      <!-- Tiny gold highlights -->
-      <circle cx="346" cy="10" r=".6" fill="#f0e0b0" opacity=".4"/>
-      <circle cx="368" cy="14" r=".5" fill="#f0e0b0" opacity=".35"/>
-    </g>
-
-    <!-- ─── FAR RIGHT SMALL SAGE ─── -->
-    <g opacity=".5">
-      <path d="M400 -5 Q404 12 406 30 Q408 42 410 52" stroke="#8a9a6b" stroke-width=".6" fill="none"/>
-      <path d="M400 4 Q394 10 392 20 Q396 12 402 8Z" fill="url(#leafSage1)" opacity=".3"/>
-      <path d="M402 8 Q408 14 412 24 Q406 16 402 12Z" fill="url(#leafSage2)" opacity=".25"/>
-      <path d="M404 22 Q398 28 396 38 Q400 30 406 26Z" fill="url(#leafSage1)" opacity=".22"/>
-      <path d="M406 28 Q412 34 414 42 Q410 36 406 32Z" fill="url(#leafSage2)" opacity=".2"/>
-    </g>
-  </svg>
+  <img class="ft-bg" src="footer-roses.jpeg" alt="" loading="lazy">
 
   <div class="ft-body">
     <p class="ft-msg">Te esperamos con mucho cariño...</p>
@@ -1729,8 +1588,8 @@ function scrollAnims() {
     scrollTrigger: { trigger: '#rsvp', start: 'top 82%', once: true }
   });
 
-  gsap.from('.ft-botanical', {
-    opacity: 0, y: -20, duration: .8, ease,
+  gsap.from('#footer .ft-bg', {
+    opacity: 0, scale: 1.05, duration: 1, ease,
     scrollTrigger: { trigger: '#footer', start: 'top 90%', once: true }
   });
   gsap.from(['.ft-msg','.ft-nofaltes','.ft-rings'], {
