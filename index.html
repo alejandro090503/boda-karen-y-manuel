@@ -232,69 +232,59 @@ section{padding:64px 22px}
 
 /* ── FECHA ────────────────────────────────────────────── */
 #fecha{
-  background:var(--ink2);
-  padding:52px 24px;
   position:relative;overflow:hidden;
-  text-align:center;
-  -webkit-mask-image:linear-gradient(to bottom, transparent, black 18%, black 82%, transparent);
-  mask-image:linear-gradient(to bottom, transparent, black 18%, black 82%, transparent);
+  padding:0;min-height:85vh;
+  display:flex;align-items:center;
 }
-#fecha::before{
-  content:'';position:absolute;pointer-events:none;
-  top:-30px;left:-30px;width:140px;height:140px;
-  background:
-    radial-gradient(circle, rgba(111,118,10,.07) 0%, transparent 65%);
+.fch-bg{
+  position:absolute;inset:0;
+  width:100%;height:100%;
+  object-fit:cover;
+  pointer-events:none;
 }
-.fch-wrap{
-  display:inline-flex;align-items:center;gap:0;
-  position:relative;left:50%;transform:translateX(-62%);
+.fch-content{
+  position:relative;z-index:2;
+  padding:72px 32px 64px;
+  text-align:left;
+  max-width:65%;
 }
-.fch-left{
-  flex:0 0 auto;text-align:right;padding-right:22px;
+.fch-intro{
+  font-family:'Cormorant Garamond',serif;
+  font-size:18px;font-weight:400;font-style:italic;
+  color:#3a3a3a;margin-bottom:18px;
+  letter-spacing:.5px;
 }
 .fch-n1{
-  font-family:'Le Major','Bodoni Moda',serif;
-  font-size:clamp(34px,9vw,46px);font-weight:400;
-  color:var(--cream);line-height:1.1;
+  font-family:'Lato',sans-serif;
+  font-size:clamp(26px,7vw,36px);font-weight:400;
+  color:#2a2a2a;line-height:1.15;
+  letter-spacing:clamp(6px,2vw,10px);
+  text-transform:uppercase;
 }
 .fch-full{
-  font-family:'Cormorant Garamond',serif;
-  font-size:12px;font-weight:500;letter-spacing:1.5px;
-  color:rgba(56,87,26,.55);margin-bottom:10px;
+  font-family:'Lato',sans-serif;
+  font-size:clamp(12px,3.2vw,15px);font-weight:500;
+  letter-spacing:clamp(3px,1vw,5px);
+  color:#4a4a4a;margin-bottom:4px;
   text-transform:uppercase;
 }
 .fch-amp{
   font-family:'Great Vibes',cursive;
-  font-size:34px;color:var(--peach);
-  display:block;margin:4px 0 10px;line-height:1;
-}
-.fch-line{
-  width:1px;flex-shrink:0;align-self:stretch;
-  background:linear-gradient(
-    to bottom,
-    transparent 0%,
-    rgba(56,87,26,.25) 15%,
-    rgba(56,87,26,.25) 85%,
-    transparent 100%
-  );
-}
-.fch-right{
-  flex:0 0 auto;padding-left:22px;
-  display:flex;flex-direction:column;align-items:flex-start;
-  gap:0;
-}
-.fch-num{
-  font-family:'Cormorant Garamond',serif;
-  font-weight:400;font-size:clamp(74px,20vw,100px);
-  line-height:.86;color:#b8a99a;
-  display:block;letter-spacing:-2px;
+  font-size:clamp(52px,14vw,72px);color:#2a2a2a;
+  display:block;margin:8px 0 6px;line-height:1;
 }
 .fch-honor{
-  text-align:center;margin-top:32px;
-  font-family:'Great Vibes',cursive;
-  font-size:22px;font-weight:400;
-  color:var(--cream);opacity:.6;
-  letter-spacing:.5px;line-height:1.6;
+  margin-top:28px;
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(17px,4.5vw,21px);font-weight:400;font-style:italic;
+  color:#3a3a3a;line-height:1.6;
+  letter-spacing:.3px;
+}
+.fch-date{
+  margin-top:14px;
+  font-family:'Lato',sans-serif;
+  font-size:clamp(20px,5.5vw,28px);font-weight:400;
+  color:#2a2a2a;letter-spacing:3px;
 }
 
 /* ── COUNTDOWN ────────────────────────────────────────── */
@@ -833,22 +823,17 @@ section.has-sec-waves{padding-top:84px;padding-bottom:86px}
 
 <!-- ═══════════════ 1.5. FECHA ══════════════════════════ -->
 <section id="fecha">
-  <div class="fch-wrap">
-    <div class="fch-left">
-      <p class="fch-n1">Karen</p>
-      <p class="fch-full">Acosta Gómez</p>
-      <p class="fch-amp">&amp;</p>
-      <p class="fch-n1">Manuel</p>
-      <p class="fch-full">del Valle Merino</p>
-    </div>
-    <div class="fch-line" aria-hidden="true"></div>
-    <div class="fch-right">
-      <span class="fch-num">04</span>
-      <span class="fch-num">07</span>
-      <span class="fch-num">26</span>
-    </div>
+  <img class="fch-bg" src="fondoKM.jpeg" alt="" loading="eager">
+  <div class="fch-content">
+    <p class="fch-intro">Nosotros...</p>
+    <p class="fch-n1">Karen</p>
+    <p class="fch-full">Acosta Gómez</p>
+    <p class="fch-amp">y</p>
+    <p class="fch-n1">Manuel</p>
+    <p class="fch-full">del Valle Merino</p>
+    <p class="fch-honor">Tenemos el honor<br>de invitarte a celebrar<br>nuestra unión.</p>
+    <p class="fch-date">04.07.26</p>
   </div>
-  <p class="fch-honor">Tenemos el honor de invitarte<br>a celebrar nuestra unión</p>
 </section>
 
 <!-- ═══════════════ 2. CUENTA REGRESIVA ══════════════ -->
