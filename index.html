@@ -303,10 +303,10 @@ section{padding:64px 22px}
 #countdown{
   position:relative;overflow:hidden;padding:0;
   background:
-    radial-gradient(ellipse 80% 55% at 12% 25%, rgba(111,118,10,.22) 0%, transparent 52%),
-    radial-gradient(ellipse 60% 70% at 88% 78%, rgba(56,87,26,.28) 0%, transparent 48%),
-    radial-gradient(ellipse 100% 50% at 50% 100%, rgba(10,20,4,.85) 0%, transparent 50%),
-    linear-gradient(170deg, #111a09 0%, #1c2712 30%, #111a08 65%, #0a1205 100%);
+    radial-gradient(ellipse 80% 55% at 12% 25%, rgba(111,118,10,.12) 0%, transparent 52%),
+    radial-gradient(ellipse 60% 70% at 88% 78%, rgba(56,87,26,.15) 0%, transparent 48%),
+    radial-gradient(ellipse 100% 50% at 50% 100%, rgba(10,20,4,.55) 0%, transparent 50%),
+    linear-gradient(170deg, #1e2816 0%, #2a3520 30%, #1e2815 65%, #162010 100%);
   -webkit-mask-image:linear-gradient(to bottom, transparent, black 18%, black 82%, transparent);
   mask-image:linear-gradient(to bottom, transparent, black 18%, black 82%, transparent);
 }
@@ -369,15 +369,16 @@ section{padding:64px 22px}
 }
 
 /* ── LOCATION ─────────────────────────────────────────── */
-#location{background:var(--ink2);position:relative;overflow:hidden;padding:64px 22px;}
+#location{background:#fff;position:relative;overflow:hidden;padding:64px 22px;}
 .loc-block{text-align:center;margin-bottom:56px;}
 .loc-block:last-child{margin-bottom:0}
 .loc-icon{margin:0 auto 6px;}
 .loc-icon svg{width:56px;height:56px;}
 .loc-title{
-  font-family:'Great Vibes',cursive;
+  font-family:'Cormorant Garamond',serif;
   font-size:clamp(36px,9vw,44px);
   color:var(--cream);margin-bottom:22px;line-height:1.2;
+  font-weight:500;
 }
 .loc-photo{
   width:210px;height:210px;border-radius:50%;
@@ -440,10 +441,10 @@ section{padding:64px 22px}
 .cal-sub{font-size:16px;color:var(--cream);opacity:.72;line-height:1.7;margin:14px 0 28px;font-weight:500;}
 
 /* ── ITINERARY ────────────────────────────────────────── */
-#itinerary{background:#929b6d;overflow:hidden;padding:64px 22px;}
+#itinerary{background:#fff;overflow:hidden;padding:64px 22px;}
 .it-title{
   font-family:'Great Vibes',cursive;font-size:clamp(40px,10vw,52px);
-  color:#fff;text-align:center;margin-bottom:36px;line-height:1.1;
+  color:var(--cream);text-align:center;margin-bottom:36px;line-height:1.1;
 }
 .it-line{
   position:relative;display:flex;flex-direction:column;align-items:center;
@@ -451,7 +452,7 @@ section{padding:64px 22px}
 }
 .it-line::before{
   content:'';position:absolute;top:0;bottom:0;left:50%;
-  width:2px;background:rgba(56,87,26,.4);transform:translateX(-50%);
+  width:2px;background:rgba(56,87,26,.2);transform:translateX(-50%);
 }
 .it-step{
   position:relative;width:100%;display:flex;align-items:center;
@@ -462,41 +463,42 @@ section{padding:64px 22px}
 .it-right{text-align:left;padding-left:40px;}
 .it-circle{
   width:54px;height:54px;border-radius:50%;flex-shrink:0;
-  background:rgba(56,87,26,.25);
+  background:rgba(56,87,26,.1);
+  border:1px solid rgba(56,87,26,.2);
   display:flex;align-items:center;justify-content:center;
   position:relative;z-index:2;
 }
 .it-circle svg{width:28px;height:28px;}
 .it-left::after{
   content:'';position:absolute;right:-8px;top:50%;
-  width:28px;height:1px;background:rgba(255,255,255,.35);
+  width:28px;height:1px;background:rgba(56,87,26,.25);
   transform:translateY(-50%);
 }
 .it-left::before{
   content:'';position:absolute;right:-10px;top:50%;
   width:5px;height:5px;border-radius:50%;
-  background:rgba(255,255,255,.45);
+  background:rgba(56,87,26,.35);
   transform:translate(0,-50%);z-index:1;
 }
 .it-right::before{
   content:'';position:absolute;left:-8px;top:50%;
-  width:28px;height:1px;background:rgba(255,255,255,.35);
+  width:28px;height:1px;background:rgba(56,87,26,.25);
   transform:translateY(-50%);
 }
 .it-right::after{
   content:'';position:absolute;left:-10px;top:50%;
   width:5px;height:5px;border-radius:50%;
-  background:rgba(255,255,255,.45);
+  background:rgba(56,87,26,.35);
   transform:translate(0,-50%);z-index:1;
 }
 .it-left,.it-right{position:relative;}
 .it-label{
   font-family:'Cormorant Garamond',serif;font-style:italic;
-  font-size:17px;font-weight:500;color:#fff;line-height:1.3;
+  font-size:17px;font-weight:500;color:var(--cream);line-height:1.3;
 }
 .it-time{
   font-family:'Cormorant Garamond',serif;font-style:italic;
-  font-size:17px;font-weight:400;color:rgba(255,255,255,.8);
+  font-size:17px;font-weight:400;color:rgba(56,87,26,.7);
 }
 
 /* ── DRESSCODE ────────────────────────────────────────── */
@@ -554,7 +556,7 @@ section{padding:64px 22px}
 .sdiv{height:36px}
 
 /* ── GALLERY ──────────────────────────────────────────── */
-#gallery{background:var(--ink3);padding:84px 0 96px;position:relative;overflow:hidden;}
+#gallery{background:#fff;padding:84px 0 96px;position:relative;overflow:hidden;}
 #gallery > .lbl,
 #gallery > .ttl,
 #gallery > .gline,
