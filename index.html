@@ -550,10 +550,23 @@ section{padding:64px 22px}
   object-fit:cover;
   pointer-events:none;z-index:0;
 }
+#family::before,#family::after{
+  content:'';position:absolute;left:0;right:0;
+  z-index:1;pointer-events:none;
+}
+#family::before{
+  top:0;height:90px;
+  background:linear-gradient(to bottom,#fff 0%,transparent 100%);
+}
+#family::after{
+  bottom:0;height:90px;
+  background:linear-gradient(to top,#fff 0%,transparent 100%);
+}
 #family > *:not(.fam-bg){position:relative;z-index:2;}
 .fam-card{
   text-align:center;border:1px solid rgba(111,118,10,.2);border-radius:14px;
-  padding:28px 28px;background:rgba(111,118,10,.04);max-width:360px;margin:0 auto;
+  padding:28px 28px;background:rgba(255,255,255,.88);max-width:360px;margin:0 auto;
+  backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
   transition:transform .45s cubic-bezier(.34,1.56,.64,1),border-color .3s;
 }
 .fam-card:hover{transform:translateY(-4px);border-color:rgba(111,118,10,.3)}
