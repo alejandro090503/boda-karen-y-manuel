@@ -543,7 +543,14 @@ section{padding:64px 22px}
 .alb-hint{text-align:center;font-size:14px;color:var(--cream);opacity:.5;line-height:1.75;margin-top:22px;font-weight:500;}
 
 /* ── FAMILY ───────────────────────────────────────────── */
-#family{background:var(--ink);overflow:hidden}
+#family{position:relative;overflow:hidden;}
+.fam-bg{
+  position:absolute;inset:0;
+  width:100%;height:100%;
+  object-fit:cover;
+  pointer-events:none;z-index:0;
+}
+#family > *:not(.fam-bg){position:relative;z-index:2;}
 .fam-card{
   text-align:center;border:1px solid rgba(111,118,10,.2);border-radius:14px;
   padding:28px 28px;background:rgba(111,118,10,.04);max-width:360px;margin:0 auto;
@@ -1180,6 +1187,7 @@ section.has-sec-waves{padding-top:84px;padding-bottom:86px}
 
 <!-- ═══════════════ 9. FAMILIA ════════════════════════ -->
 <section id="family">
+  <img class="fam-bg" src="fondo-familia.webp" alt="" loading="lazy">
   <span class="lbl">Con amor de</span>
   <h2 class="ttl">Familia</h2>
   <div class="gline"></div>
